@@ -1,0 +1,73 @@
+{
+  "name": "@altiore/react-components",
+  "version": "0.0.0",
+  "description": "Altiore React Components - Life Is Wonderful",
+  "main": "index.js",
+  "repository": "test.repo.url.com",
+  "author": "razvanlomov@gmail.com",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "start-storybook -p 9001",
+    "build": "tsc",
+    "publish": "yarn build && git add . && git commit -m 'new build' && npm version patch && git push && git push --tags",
+    "story-static": "build-storybook -o build"
+  },
+  "devDependencies": {
+    "@storybook/addon-info": "^3.4.7",
+    "@storybook/react": "^3.4.7",
+    "@types/classnames": "^2.2.4",
+    "@types/jest": "^23.0.0",
+    "@types/node": "^10.3.2",
+    "@types/react": "^16.3.17",
+    "@types/react-css-modules": "^4.6.1",
+    "@types/react-dom": "^16.0.6",
+    "@types/storybook__react": "^3.0.7",
+    "autoprefixer": "^8.6.2",
+    "css-loader": "^0.28.11",
+    "fork-ts-checker-webpack-plugin": "^0.4.2",
+    "jest": "^23.1.0",
+    "node-sass": "^4.9.0",
+    "postcss-flexbugs-fixes": "^3.3.1",
+    "postcss-loader": "^2.1.5",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
+    "resolve-url-loader": "^2.3.0",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "ts-jest": "^22.4.6",
+    "ts-loader": "^3.5.0",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^2.9.1"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.10",
+    "react": "^16.4.0",
+    "react-css-modules": "^4.7.3",
+    "react-dom": "^16.4.0"
+  },
+  "peerDependencies": {
+    "react": "^16.x.x",
+    "react-dom": "^16.x.x"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "mapCoverage": true,
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/lib/"
+    ],
+    "testRegex": "(.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ]
+  }
+}
