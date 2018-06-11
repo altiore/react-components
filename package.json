@@ -1,13 +1,13 @@
 {
   "name": "@altiore/react-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Altiore React Components - Life Is Wonderful",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/altiore/react-components.git"
   },
-  "author": "razvanlomov@gmail.com",
+  "author": "Altiore <altiore.public@gmail.com> (https://altiore.org)",
   "license": "MIT",
   "types": "dist/index.d.ts",
   "scripts": {
