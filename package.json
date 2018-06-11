@@ -16,6 +16,10 @@
     "publish": "yarn build && git add . && git commit -m 'new build' && npm version patch && git push && git push --tags",
     "story-static": "build-storybook -o build"
   },
+  "files": [
+    "src/",
+    "build/"
+  ],
   "devDependencies": {
     "@storybook/addon-info": "^3.4.7",
     "@storybook/react": "^3.4.7",
