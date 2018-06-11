@@ -1,6 +1,6 @@
 {
-  "name": "@altiore/react-components",
-  "version": "0.0.2",
+  "name": "@altiore",
+  "version": "0.0.3",
   "description": "Altiore React Components - Life Is Wonderful",
   "main": "dist/index.js",
   "repository": {
