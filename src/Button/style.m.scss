@@ -8,7 +8,7 @@ $secondary: #eceef0 !default;
 $secondarySecond: lighten($primary, 10%) !default;
 
 $success: #28a745 !default;// hover #218838
-$danger: #dc3545 !default; // hover #c82333
+$danger: #dc3545 !default; // hover #c82333 #dc3545
 $warning: #ffc107 !default; // hover #E0A800 or #ff8484
 $info: #17a2b8 !default;
 $light: #17a2b8 !default;
@@ -33,8 +33,8 @@ $link: #17a2b8 !default;
   text-align: center;
   text-decoration: none;
   transition: color 0.2s $mainEasing, box-shadow 0.1s $mainEasing, border-color 0.2s $mainEasing;
-  height: 40px;
-  min-width: 40px;
+  height: 38px;
+  min-width: 38px;
   white-space: nowrap;
   &:hover {
     color: $primary;

@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { Button } from './index';
+import { ButtonStyled as Button } from './index';
 
 storiesOf('Atoms/Button', module)
   .add('default buttons', () => (

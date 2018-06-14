@@ -1,0 +1,1 @@
+export declare const FormDecorator: (fn: () => any) => any;

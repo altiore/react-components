@@ -34,7 +34,7 @@ export interface IProps {
   xs?: boolean;
 }
 
-export class Button extends React.PureComponent<IProps> {
+export class Button extends React.PureComponent<IProps & React.ButtonHTMLAttributes<IProps>> {
   public render() {
     const {
       children,
@@ -44,6 +44,7 @@ export class Button extends React.PureComponent<IProps> {
       lg,
       onClick,
       primary,
+      type,
       float,
       isLoading,
       disabled,
@@ -57,6 +58,7 @@ export class Button extends React.PureComponent<IProps> {
     }
     return (
       <button
+        type={type}
         onClick={onClick}
         disabled={disabled || isLoading}
         className={cn(styles.button, className, {
