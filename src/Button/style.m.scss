@@ -1,13 +1,24 @@
-$mainEasing: ease-in-out;
-$main: #47948a;
+$mainEasing: ease-in-out !default;
 $white: #fff;
-$gray: #eceef0;
-$error: #ff8484;
+
+$primary: #47948a !default;
+$primarySecond: lighten($primary, 10%) !default;
+
+$secondary: #eceef0 !default;
+$secondarySecond: lighten($primary, 10%) !default;
+
+$success: #28a745 !default;// hover #218838
+$danger: #dc3545 !default; // hover #c82333
+$warning: #ffc107 !default; // hover #E0A800 or #ff8484
+$info: #17a2b8 !default;
+$light: #17a2b8 !default;
+$dark: #17a2b8 !default;
+$link: #17a2b8 !default;
 
 .button {
   align-items: center;
   background-color: #e6e6e6;
-  border: solid 1px $gray;
+  border: solid 1px $secondary;
   border-radius: 3px;
   color: #393939;
   cursor: pointer;
@@ -26,17 +37,17 @@ $error: #ff8484;
   min-width: 40px;
   white-space: nowrap;
   &:hover {
-    color: $main;
-    border-color: $main;
+    color: $primary;
+    border-color: $primary;
     path {
-      fill: $main;
+      fill: $primary;
     }
   }
   &:active {
-    box-shadow: 0 0 10px 0 rgba($main, 0.3) inset;
+    box-shadow: 0 0 10px 0 rgba($primary, 0.3) inset;
   }
   &:focus {
-    border: 1px solid $main;
+    border: 1px solid $primary;
   }
 
   path {
@@ -49,15 +60,15 @@ $error: #ff8484;
 }
 
 .primary {
-  background-image: linear-gradient(to right, #47948a, #42ad8d);
+  background-image: linear-gradient(to right, $primary, $primarySecond);
   color: $white;
-  border: solid 1px $main;
+  border: solid 1px $primary;
   transition: box-shadow 0.1s $mainEasing, background-color 0.2s $mainEasing, border-color 0.2s $mainEasing;
   border-radius: 3px;
   &:hover {
     color: $white;
     background-image: linear-gradient(to right, #41877e, #3da183);
-    border-color: darken($main, 6%);
+    border-color: darken($primary, 6%);
   }
   &:active {
     background-image: linear-gradient(to right, #41877e, #3da183);
@@ -93,7 +104,7 @@ $error: #ff8484;
   &:active {
     color: $white;
     border-color: $white;
-    box-shadow: 0 0 10px 0 rgba($main, 0.3) inset;
+    box-shadow: 0 0 10px 0 rgba($primary, 0.3) inset;
   }
 }
 

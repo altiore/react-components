@@ -4,11 +4,10 @@ import * as React from 'react';
 // import Ink from '../Ink'
 // import Loading from '../Icons/Loading';
 
-// const baseClass = 'base-button-ratiov';
-
 export interface IProps {
   children: string | JSX.Element;
   className?: string;
+  danger?: boolean;
   disabled?: boolean;
   float?: boolean;
   isLoading?: boolean;
@@ -21,6 +20,7 @@ export interface IProps {
   stretch?: boolean;
   styles?: {
     button: string,
+    danger: string,
     float: string,
     little: string,
     lg: string,
@@ -39,6 +39,7 @@ export class Button extends React.PureComponent<IProps> {
     const {
       children,
       className,
+      danger,
       sm,
       lg,
       onClick,
@@ -46,6 +47,7 @@ export class Button extends React.PureComponent<IProps> {
       float,
       isLoading,
       disabled,
+      secondary,
       stretch,
       styles,
       xs,
@@ -61,7 +63,9 @@ export class Button extends React.PureComponent<IProps> {
           [styles.xs]: xs,
           [styles.sm]: sm,
           [styles.lg]: lg,
+          [styles.danger]: danger,
           [styles.primary]: primary,
+          [styles.secondary]: secondary,
           [styles.float]: float,
           [styles.stretch]: stretch,
         })}
