@@ -1,6 +1,6 @@
 {
   "name": "liw-components",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Altiore React Components - Life Is Wonderful",
   "main": "dist/index.js",
   "repository": {
