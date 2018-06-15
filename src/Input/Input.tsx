@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IconBaseProps } from 'react-icon-base';
 import { WrappedFieldProps } from 'redux-form/lib/Field'
 
-export interface InputProps extends WrappedFieldProps {
+export interface InputProps {
   icon?: React.ReactElement<IconBaseProps>,
   inputClass?: string;
   showLabel?: boolean;
@@ -23,7 +23,7 @@ export interface InputProps extends WrappedFieldProps {
   };
 }
 
-export const Input: React.ComponentType<InputProps> = ({
+export const Input = ({
   input,
   label,
   showLabel,
@@ -34,7 +34,7 @@ export const Input: React.ComponentType<InputProps> = ({
   inputClass,
   wrapperClass,
   icon,
-}: InputProps): React.ReactElement<InputProps>|null => {
+}: InputProps & WrappedFieldProps) => {
   if (!styles) {
     return null;
   }
