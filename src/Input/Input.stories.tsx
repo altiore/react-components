@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react'
-import { FaLock, FaUser } from 'react-icons/lib/fa';
+import FaLock from 'react-icons/lib/fa/lock';
+import FaUser from 'react-icons/lib/fa/user';
 import { WrappedFieldInputProps, WrappedFieldMetaProps } from 'redux-form/lib/Field'
 
 import { action } from '@storybook/addon-actions'
