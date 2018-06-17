@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { FaLock, FaUser } from 'react-icons/lib/fa';
 import { Field, InjectedFormProps } from 'redux-form';
+
+const FaLock = require('react-icons/lib/fa/lock');
+const FaUser = require('react-icons/lib/fa/user');
 
 import { ButtonStyled } from '../Button'
 import { InputStyled } from '../Input'
