@@ -25,7 +25,6 @@ $link: #17a2b8 !default;
   display: flex;
   font-size: 16px;
   font-weight: 400;
-  font-family: 'Roboto';
   justify-content: center;
   line-height: 16px;
   padding: 0 20px 0;
@@ -108,23 +107,23 @@ $link: #17a2b8 !default;
   }
 }
 
-.red {
-  background-color: #ff5151;
-  border-color: #ff5151;
+.danger {
+  background-color: $danger;
+  border-color: $danger;
   color: white;
   &:hover {
-    background-image: linear-gradient(to right, #e04848, #f04d4d);
-    border-color: #ff5151;
+    background-image: linear-gradient(to right, $danger, lighten($danger, 10%));
+    border-color: $danger;
     color: white;
     path {
-      fill: #f04d4d;
+      fill: $danger;
     }
   }
   &:active {
-    background-image: linear-gradient(to right, #e04848, #f04d4d);
+    background-image: linear-gradient(to right, $danger, lighten($danger, 10%));
     color: white;
     path {
-      fill: #f04d4d;
+      fill: $danger;
     }
   }
 }
