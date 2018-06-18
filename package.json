@@ -12,9 +12,11 @@
   "types": "index.d.ts",
   "scripts": {
     "start": "start-storybook -p 9001",
-    "build": "rimraf dist && tsc --p tsconfig.prod.json && copyfiles -u 1 src/**/*.scss .",
-    "publish": "yarn build && git add . && git commit -m 'new build' && npm version patch && git push && git push --tags",
-    "story-static": "build-storybook -o build"
+    "build": "rimraf dist && tsc --p tsconfig.prod.json && copyfiles -u 1 @src/**/*.scss .",
+    "prepublish": "yarn build && git add . && git commit --amend",
+    "publish:old": "yarn build && git add . && git commit -m 'new build' && npm version patch && git push && git push --tags",
+    "story-static": "build-storybook -o build",
+    "precommit": "lint-staged"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.7",
@@ -36,10 +38,13 @@
     "copyfiles": "^2.0.0",
     "css-loader": "^0.28.11",
     "fork-ts-checker-webpack-plugin": "^0.4.2",
+    "husky": "^0.14.3",
     "jest": "^23.1.0",
+    "lint-staged": "^7.2.0",
     "node-sass": "^4.9.0",
     "postcss-flexbugs-fixes": "^3.3.1",
     "postcss-loader": "^2.1.5",
+    "prettier": "^1.13.5",
     "react": "^16.4.0",
     "react-css-modules": "^4.7.3",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
@@ -85,6 +90,16 @@
       "tsx",
       "js",
       "json"
+    ]
+  },
+  "lint-staged": {
+    "@src/**/*.{ts,tsx}": [
+      "prettier --write --print-width 120 --single-quote --parser typescript",
+      "git add"
+    ],
+    "./@src/**/*.{js,json,md}": [
+      "prettier --write --print-width 120 --single-quote",
+      "git add"
     ]
   }
 }

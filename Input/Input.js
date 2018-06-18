@@ -12,7 +12,7 @@ var cn = require("classnames");
 var React = require("react");
 exports.Input = function (_a) {
     var _b;
-    var input = _a.input, label = _a.label, showLabel = _a.showLabel, _c = _a.type, type = _c === void 0 ? 'text' : _c, _d = _a.meta, touched = _d.touched, error = _d.error, warning = _d.warning, styles = _a.styles, placeholder = _a.placeholder, inputClass = _a.inputClass, wrapperClass = _a.wrapperClass, icon = _a.icon;
+    var input = _a.input, label = _a.label, showLabel = _a.showLabel, _c = _a.type, type = _c === void 0 ? "text" : _c, _d = _a.meta, touched = _d.touched, error = _d.error, warning = _d.warning, styles = _a.styles, placeholder = _a.placeholder, inputClass = _a.inputClass, wrapperClass = _a.wrapperClass, icon = _a.icon;
     if (!styles) {
         return null;
     }

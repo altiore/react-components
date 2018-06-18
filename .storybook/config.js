@@ -9,6 +9,6 @@ function loadStories() {
   req.keys().forEach((filename) => req(filename))
 }
 
-import "../src/styles/app.scss"
+import "../@src/styles/app.scss"
 
 configure(loadStories, module);

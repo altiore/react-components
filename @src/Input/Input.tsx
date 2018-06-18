@@ -1,10 +1,10 @@
 import * as cn from 'classnames';
 import * as React from 'react';
 import { IconBaseProps } from 'react-icon-base';
-import { WrappedFieldProps } from 'redux-form/lib/Field'
+import { WrappedFieldProps } from 'redux-form/lib/Field';
 
 export interface InputProps {
-  icon?: React.ReactElement<IconBaseProps>,
+  icon?: React.ReactElement<IconBaseProps>;
   inputClass?: string;
   showLabel?: boolean;
   type?: string;
@@ -12,14 +12,14 @@ export interface InputProps {
   placeholder?: string;
   wrapperClass?: string;
   styles?: {
-    main: string,
-    inputError: string,
-    inputWarning: string,
-    inputWrapper: string,
-    label: string,
-    input: string,
-    error: string,
-    warning: string,
+    main: string;
+    inputError: string;
+    inputWarning: string;
+    inputWrapper: string;
+    label: string;
+    input: string;
+    error: string;
+    warning: string;
   };
 }
 
@@ -33,7 +33,7 @@ export const Input = ({
   placeholder,
   inputClass,
   wrapperClass,
-  icon,
+  icon
 }: InputProps & WrappedFieldProps) => {
   if (!styles) {
     return null;
@@ -53,11 +53,12 @@ export const Input = ({
           type={type}
           className={cn(styles.input, inputClass, {
             [styles.inputError]: touched && !!error,
-            [styles.inputWarning]: touched && !!warning,
+            [styles.inputWarning]: touched && !!warning
           })}
         />
-        {touched && ((error && <span className={styles.error}>{error}</span>) ||
-          (warning && <span className={styles.warning}>{warning}</span>))}
+        {touched &&
+          ((error && <span className={styles.error}>{error}</span>) ||
+            (warning && <span className={styles.warning}>{warning}</span>))}
       </div>
     </div>
   );

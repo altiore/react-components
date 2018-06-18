@@ -5,6 +5,5 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./Button"));
 __export(require("./Input"));
-__export(require("./Loader"));
 __export(require("./LoginForm"));
 //# sourceMappingURL=index.js.map
