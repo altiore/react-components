@@ -5,7 +5,7 @@ const FaLock = require('react-icons/lib/fa/lock');
 const FaUser = require('react-icons/lib/fa/user');
 
 import { action } from '@storybook/addon-actions'
-import { InputStyled as Input } from './index'
+import { Input } from './index'
 
 storiesOf('Atoms/Input', module).add('default', () => (
   <form style={{ width: 300 }}>

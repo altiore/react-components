@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { ButtonStyled as Button } from './index';
+import { Button } from './index';
 const block = {
   alignItems: 'center',
   display: 'flex',
