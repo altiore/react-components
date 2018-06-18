@@ -1,8 +1,8 @@
 import * as CSSModules from 'react-css-modules';
 
-import { Button } from './Button';
+import { Button as ButtonRaw } from './Button';
 import * as styles from './style.m.scss';
 
-const ButtonStyled = CSSModules(Button, styles);
+const Button = CSSModules(ButtonRaw, styles);
 
-export { Button, ButtonStyled };
+export { Button, ButtonRaw };

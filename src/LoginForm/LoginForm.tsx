@@ -4,8 +4,8 @@ import { Field, InjectedFormProps } from 'redux-form';
 const FaLock = require('react-icons/lib/fa/lock');
 const FaUser = require('react-icons/lib/fa/user');
 
-import { ButtonStyled } from '../Button'
-import { InputStyled } from '../Input'
+import { Button } from '../Button'
+import { Input } from '../Input'
 
 export interface ILoginFormProps {
   title?: string,
@@ -21,19 +21,19 @@ export class LoginForm extends React.Component<ILoginFormProps & InjectedFormPro
           {title && <h3 styleName="title">{title}</h3>}
           <Field
             name="email"
-            component={InputStyled as any}
+            component={Input as any}
             type="email"
             icon={<FaUser />}
           />
           <Field
             name="password"
-            component={InputStyled as any}
+            component={Input as any}
             type="password"
             icon={<FaLock />}
           />
-          <ButtonStyled type="submit" stretch primary disabled={pristine || submitting} isLoading={submitting}>
+          <Button type="submit" stretch primary disabled={pristine || submitting} isLoading={submitting}>
             <span>{buttonText}</span>
-          </ButtonStyled>
+          </Button>
         </form>
       </div>
     );
