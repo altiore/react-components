@@ -60,9 +60,9 @@ module.exports = (baseConfig, env, config) => {
       {
         loader: require.resolve('sass-loader'),
         options: {
-          // data: '@import "app.scss";',
+          data: '@import "variables.scss";',
           includePaths: [
-            path.resolve(paths.appSrc, 'styles')
+            path.resolve(__dirname, '..', 'src', 'styles'),
           ],
         },
       },
@@ -107,9 +107,9 @@ module.exports = (baseConfig, env, config) => {
       {
         loader: require.resolve('sass-loader'),
         options: {
-          // data: '@import "app.scss";',
+          data: '@import "variables.scss";',
           includePaths: [
-            path.resolve(__dirname, '..', 'styles'),
+            path.resolve(__dirname, '..', 'src', 'styles'),
           ],
         },
       },

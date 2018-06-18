@@ -1,26 +1,28 @@
 $mainEasing: ease-in-out !default;
-$white: #fff;
 
-$primary: #47948a !default;
-$primarySecond: lighten($primary, 10%) !default;
+$buttonDisabledText: $disabledText !default;
 
-$secondary: #eceef0 !default;
-$secondarySecond: lighten($primary, 10%) !default;
+$buttonDefault: $default !default;
+$buttonDefaultActive: $defaultActive !default;
+$buttonDefaultBorder: $defaultBorder !default;
+$buttonDefaultText: $defaultText !default;
 
-$success: #28a745 !default;// hover #218838
-$danger: #dc3545 !default; // hover #c82333 #dc3545
-$warning: #ffc107 !default; // hover #E0A800 or #ff8484
-$info: #17a2b8 !default;
-$light: #17a2b8 !default;
-$dark: #17a2b8 !default;
-$link: #17a2b8 !default;
+$buttonDanger: $danger !default;
+$buttonDangerActive: $dangerActive !default;
+$buttonDangerBorder: $dangerBorder !default;
+$buttonDangerText: $dangerText !default;
+
+$buttonSecondary: $secondary !default;
+$buttonSecondaryActive: $secondaryActive !default;
+$buttonSecondaryBorder: $secondaryBorder !default;
+$buttonSecondaryText: $secondaryText !default;
 
 .button {
   align-items: center;
-  background-color: #e6e6e6;
-  border: solid 1px $secondary;
+  background-color: $buttonDefault;
+  border: solid 1px $buttonDefaultBorder;
   border-radius: 3px;
-  color: #393939;
+  color: $buttonDefaultText;
   cursor: pointer;
   display: flex;
   font-size: 16px;
@@ -36,94 +38,68 @@ $link: #17a2b8 !default;
   min-width: 38px;
   white-space: nowrap;
   &:hover {
-    color: $primary;
-    border-color: $primary;
+    background-color: $buttonDefaultActive;
+    border-color: $buttonDefaultBorder;
+    color: $buttonDefaultText;
     path {
-      fill: $primary;
+      fill: $buttonDefaultText;
     }
   }
   &:active {
-    box-shadow: 0 0 10px 0 rgba($primary, 0.3) inset;
+    box-shadow: 0 0 10px 0 rgba($buttonDefault, 0.3) inset;
   }
   &:focus {
-    border: 1px solid $primary;
+    border: 1px solid $buttonDefaultActive;
   }
 
   path {
     transition: fill 0.2s $mainEasing;
   }
   &[disabled] {
-    opacity: 0.7;
+    background-color: $buttonDefault;
+    border-color: $buttonDefaultBorder;
+    color: $buttonDefaultText;
+    opacity: 0.5;
     cursor: not-allowed;
-  }
-}
-
-.primary {
-  background-image: linear-gradient(to right, $primary, $primarySecond);
-  color: $white;
-  border: solid 1px $primary;
-  transition: box-shadow 0.1s $mainEasing, background-color 0.2s $mainEasing, border-color 0.2s $mainEasing;
-  border-radius: 3px;
-  &:hover {
-    color: $white;
-    background-image: linear-gradient(to right, #41877e, #3da183);
-    border-color: darken($primary, 6%);
-  }
-  &:active {
-    background-image: linear-gradient(to right, #41877e, #3da183);
-    box-shadow: 0 0 10px 0 rgba(#fff, 0.6) inset;
-  }
-}
-
-.sm {
-  height: 32px;
-  font-size: 14px;
-  min-width: 20px;
-}
-.lg {
-  min-width: 150px;
-  height: 56px;
-}
-
-.icon {
-  font-size: 26px;
-  margin-right: -10px;
-}
-
-.float {
-  background-color: transparent;
-  color: #bdbdbd;
-  &:hover {
-    color: $white;
-    border-color: $white;
-    path {
-      fill: $white;
+    &:hover {
+      background-color: $buttonDefault;
+      border-color: $buttonDefaultBorder;
+      color: $buttonDefaultText;
+      opacity: 0.5;
     }
-  }
-  &:active {
-    color: $white;
-    border-color: $white;
-    box-shadow: 0 0 10px 0 rgba($primary, 0.3) inset;
   }
 }
 
 .danger {
-  background-color: $danger;
-  border-color: $danger;
-  color: white;
+  background-color: $buttonDanger;
+  border-color: $buttonDangerBorder;
+  color: $buttonDangerText;
   &:hover {
-    background-image: linear-gradient(to right, $danger, lighten($danger, 10%));
-    border-color: $danger;
-    color: white;
+    background-image: linear-gradient(to right, $buttonDangerActive, lighten($buttonDangerActive, 10%));
+    border-color: $buttonDangerActive;
+    color: $buttonDangerText;
     path {
-      fill: $danger;
+      fill: $buttonDangerActive;
     }
   }
   &:active {
-    background-image: linear-gradient(to right, $danger, lighten($danger, 10%));
-    color: white;
+    background-image: linear-gradient(to right, $buttonDangerActive, lighten($buttonDangerActive, 10%));
+    color: $buttonDangerText;
     path {
-      fill: $danger;
+      fill: $buttonDangerActive;
+    }
+  }
+  &[disabled] {
+    background-color: $buttonDanger;
+    border-color: $buttonDangerBorder;
+    color: $buttonDangerText;
+    opacity: 0.5;
+    cursor: not-allowed;
+    &:hover {
+      background-color: $buttonDanger;
+      border-color: $buttonDangerBorder;
+      color: $buttonDangerText;
+      opacity: 0.5;
     }
   }
 }
@@ -132,13 +108,36 @@ $link: #17a2b8 !default;
   width: 100%;
 }
 
-.black {
-  background-color: #3d3b3a;
-  border-radius: 3px;
-  height: 44px;
-  color: #fff;
-}
-
-.text:first-letter {
-  text-transform: uppercase;
+.secondary {
+  background-color: $buttonSecondary;
+  border-color: $buttonSecondaryBorder;
+  color: $buttonSecondaryText;
+  &:hover {
+    background-image: linear-gradient(to right, $buttonSecondaryActive, lighten($buttonSecondaryActive, 10%));
+    border-color: $buttonSecondaryActive;
+    color: $buttonSecondaryText;
+    path {
+      fill: $buttonSecondaryActive;
+    }
+  }
+  &:active {
+    background-image: linear-gradient(to right, $buttonSecondaryActive, lighten($buttonSecondaryActive, 10%));
+    color: $buttonSecondaryText;
+    path {
+      fill: $buttonSecondaryActive;
+    }
+  }
+  &[disabled] {
+    background-color: $buttonSecondary;
+    border-color: $buttonSecondaryBorder;
+    color: $buttonDisabledText;
+    opacity: 0.5;
+    cursor: not-allowed;
+    &:hover {
+      background-color: $buttonSecondary;
+      border-color: $buttonSecondaryBorder;
+      color: $buttonDisabledText;
+      opacity: 0.5;
+    }
+  }
 }
