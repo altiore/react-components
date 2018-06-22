@@ -12,8 +12,7 @@
   "types": "index.d.ts",
   "scripts": {
     "start": "start-storybook -p 9001",
-    "build": "rimraf dist && tsc --p tsconfig.prod.json && copyfiles -u 1 @src/**/*.scss .",
-    "prepublish": "yarn build && git add . && git commit --amend",
+    "build": "tsc --p tsconfig.prod.json && copyfiles -u 1 @src/**/*.scss . && node scripts/replaseString.js",
     "publish:old": "yarn build && git add . && git commit -m 'new build' && npm version patch && git push && git push --tags",
     "story-static": "build-storybook -o build",
     "precommit": "lint-staged"

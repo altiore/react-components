@@ -12,7 +12,7 @@ var cn = require("classnames");
 var React = require("react");
 exports.Input = function (_a) {
     var _b;
-    var input = _a.input, label = _a.label, showLabel = _a.showLabel, _c = _a.type, type = _c === void 0 ? "text" : _c, _d = _a.meta, touched = _d.touched, error = _d.error, warning = _d.warning, styles = _a.styles, placeholder = _a.placeholder, inputClass = _a.inputClass, wrapperClass = _a.wrapperClass, icon = _a.icon;
+    var input = _a.input, label = _a.label, showLabel = _a.showLabel, _c = _a.type, type = _c === void 0 ? 'text' : _c, _d = _a.meta, touched = _d.touched, error = _d.error, warning = _d.warning, styles = _a.styles, placeholder = _a.placeholder, inputClass = _a.inputClass, wrapperClass = _a.wrapperClass, icon = _a.icon;
     if (!styles) {
         return null;
     }
@@ -24,7 +24,8 @@ exports.Input = function (_a) {
                     _b[styles.inputError] = touched && !!error,
                     _b[styles.inputWarning] = touched && !!warning,
                     _b)) })),
-            touched && ((error && React.createElement("span", { className: styles.error }, error)) ||
-                (warning && React.createElement("span", { className: styles.warning }, warning))))));
+            touched &&
+                ((error && React.createElement("span", { className: styles.error }, error)) ||
+                    (warning && React.createElement("span", { className: styles.warning }, warning))))));
 };
 //# sourceMappingURL=Input.js.map

@@ -20,4 +20,4 @@ export interface InputProps {
         warning: string;
     };
 }
-export declare const Input: ({ input, label, showLabel, type, meta: { touched, error, warning }, styles, placeholder, inputClass, wrapperClass, icon, }: InputProps & WrappedFieldProps) => JSX.Element | null;
+export declare const Input: ({ input, label, showLabel, type, meta: { touched, error, warning }, styles, placeholder, inputClass, wrapperClass, icon }: InputProps & WrappedFieldProps) => JSX.Element | null;
