@@ -4,7 +4,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 const paths = {
-  appSrc: path.resolve(process.cwd(), 'src'),
+  appSrc: path.resolve(process.cwd(), '@src'),
   appTsConfig: path.resolve(process.cwd(), 'tsconfig.json'),
   appTsLint: path.resolve(process.cwd(), 'tslint.json'),
 }
@@ -62,7 +62,7 @@ module.exports = (baseConfig, env, config) => {
         options: {
           data: '@import "variables.scss";',
           includePaths: [
-            path.resolve(__dirname, '..', 'src', 'styles'),
+            path.resolve(__dirname, '..', '@src', 'styles'),
           ],
         },
       },
@@ -109,7 +109,7 @@ module.exports = (baseConfig, env, config) => {
         options: {
           data: '@import "variables.scss";',
           includePaths: [
-            path.resolve(__dirname, '..', 'src', 'styles'),
+            path.resolve(__dirname, '..', '@src', 'styles'),
           ],
         },
       },
