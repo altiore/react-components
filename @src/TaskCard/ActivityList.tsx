@@ -52,7 +52,12 @@ class ActivityListJsx extends React.Component<IActivityListProps, IState> {
             {toggleActionTitle}
           </a>
         </div>
-        {isVisible && <div styleName="list">{list.map((item: any) => <ActivityItem {...item} />)}</div>}
+        {isVisible &&
+          (list && list.length > 0 ? (
+            <div styleName="list">{list.map((item: any, i: number) => <ActivityItem key={i} {...item} />)}</div>
+          ) : (
+            <div styleName="no-activity">Активности нет</div>
+          ))}
       </div>
     );
   }
