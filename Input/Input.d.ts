@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconBaseProps } from 'react-icon-base';
 import { WrappedFieldProps } from 'redux-form/lib/Field';
-export interface InputProps {
+export interface InputProps extends React.InputHTMLAttributes<any> {
     icon?: React.ReactElement<IconBaseProps>;
     inputClass?: string;
     showLabel?: boolean;
@@ -12,6 +12,7 @@ export interface InputProps {
     styles?: {
         main: string;
         inputError: string;
+        inputIcon: string;
         inputWarning: string;
         inputWrapper: string;
         label: string;
@@ -20,4 +21,4 @@ export interface InputProps {
         warning: string;
     };
 }
-export declare const Input: ({ input, label, showLabel, type, meta: { touched, error, warning }, styles, placeholder, inputClass, wrapperClass, icon }: InputProps & WrappedFieldProps) => JSX.Element | null;
+export declare const Input: ({ input, label, showLabel, type, meta: { touched, error, warning }, styles, placeholder, inputClass, wrapperClass, icon, ...rest }: InputProps & WrappedFieldProps) => JSX.Element | null;

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IconBaseProps } from 'react-icon-base';
 import { WrappedFieldProps } from 'redux-form/lib/Field';
 
-export interface InputProps {
+export interface InputProps extends React.InputHTMLAttributes<any> {
   icon?: React.ReactElement<IconBaseProps>;
   inputClass?: string;
   showLabel?: boolean;
@@ -14,6 +14,7 @@ export interface InputProps {
   styles?: {
     main: string;
     inputError: string;
+    inputIcon: string;
     inputWarning: string;
     inputWrapper: string;
     label: string;
@@ -33,7 +34,8 @@ export const Input = ({
   placeholder,
   inputClass,
   wrapperClass,
-  icon
+  icon,
+  ...rest
 }: InputProps & WrappedFieldProps) => {
   if (!styles) {
     return null;
@@ -48,12 +50,14 @@ export const Input = ({
       <div className={cn(styles.inputWrapper, wrapperClass)}>
         {icon && <span styleName="icon">{icon}</span>}
         <input
+          {...rest}
           {...input}
           placeholder={placeholder || label || input.name}
           type={type}
           className={cn(styles.input, inputClass, {
             [styles.inputError]: touched && !!error,
-            [styles.inputWarning]: touched && !!warning
+            [styles.inputWarning]: touched && !!warning,
+            [styles.inputIcon]: !!icon
           })}
         />
         {touched &&

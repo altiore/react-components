@@ -32,12 +32,12 @@ $inputBackGround: #FEFEFE !default;
   width: 100%;
   border-radius: 5px;
   box-sizing: border-box;
-  padding: 0 30px;
   border: 1px solid $borderColor;
   background-color: $inputBackGround;
   font-size: 13px;
   //box-shadow: 0 0 4px 0 rgba($borderColor, .2);
   outline: none;
+  padding: 0 10px;
   &[disabled] {
     background-color: $borderColor;
     cursor: not-allowed;
@@ -52,6 +52,10 @@ $inputBackGround: #FEFEFE !default;
   transition:
       border-color .2s ease-in-out,
       box-shadow .2s ease-in-out;
+}
+
+.inputIcon {
+  padding: 0 30px;
 }
 
 .error {
