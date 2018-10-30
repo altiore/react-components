@@ -74,7 +74,7 @@ $actionColor: #6b808c;
   box-shadow: 0 0 0 1px #5ba4cf;
 }
 
-.task-card .button-close {
+.button-close {
   color: $actionColor;
   border-radius: 50%;
   font-size: 20px;
@@ -91,67 +91,67 @@ $actionColor: #6b808c;
   text-decoration: underline;
 }
 
-.task-card .button-close:hover {
+.button-close:hover {
   color: $taskCardMainTextColor;
   background-color: rgba(9,45,66,.13);
 }
 
-.task-card .button-close svg {
+.button-close svg {
   margin: 6px 0 0 6px;
 }
 
-.task-card .task-details-container {
+.task-details-container {
   margin-top: 30px;
 }
+
 @media only screen and (min-width: 640px) {
-  .task-card .task-details-container {
+  .task-details-container {
     display: flex;
   }
 }
 
-
-.task-card .task-details {
+.task-details {
   flex: 5;
   margin: 0 2px 2px 0;
 }
 
-.task-card .task-details h3 {
+.task-details h3 {
   font-size: 16px;
   padding: 0;
   margin: 0;
 }
 
-.task-card .task-details > .container {
+.task-details > .container {
   margin: 0 0 40px 0;
 }
 
-.task-card .task-details .details-container {
+.task-details .details-container {
   margin-top: 10px;
   min-height: 100px;
   border: 1px dashed $actionColor;
 }
 
-.task-card .actions {
+.actions {
   flex: 1;
   margin: 0 2px 2px 0;
   padding-left: 10px;
 }
 
-.task-card .actions .action-block {
+.actions .action-block {
   margin: 0 0 10px 0;
 }
 
-.task-card .actions .action-block ul.actions {
+.actions .action-block ul.actions {
   list-style: none;
   margin: 10px 0 0 0;
   padding: 0;
 }
 
-.task-card .actions .action-block ul.actions > li {
+.actions .action-block ul.actions > li {
   margin: 5px 0;
 }
 
-.task-card .actions .action-block h3 {
+.actions .action-block h3 {
   font-size: 12px;
   text-transform: uppercase;
   padding: 0;
@@ -159,29 +159,29 @@ $actionColor: #6b808c;
   color: $actionColor;
 }
 
-.task-card .activity-list-container {
+.activity-list-container {
   margin-top: 10px;
 }
 
-.task-card .activity-list-container .header {
+.activity-list-container .header {
   margin-top: 10px;
 }
 
-.task-card .activity-list-container .header h3 {
+.activity-list-container .header h3 {
   display: inline-block;
 }
 
-.task-card .activity-list-container .header a {
+.activity-list-container .header a {
   display: inline-block;
   float: right;
   color: $actionColor;
 }
 
-.task-card .activity-list-container .list {
+.activity-list-container .list {
   margin-top: 10px;
 }
 
-.task-card .activity-list-container .no-activity {
+.activity-list-container .no-activity {
   text-align: center;
   margin: 20px 0;
 }

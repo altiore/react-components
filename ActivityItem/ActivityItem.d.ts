@@ -6,8 +6,8 @@ interface IActivityItemProps {
     userName: string;
     userPic: string;
 }
-declare class ActivityItemJsx extends React.PureComponent<IActivityItemProps, any> {
+export declare class ActivityItem extends React.PureComponent<IActivityItemProps, any> {
+    static defaultProps: Partial<IActivityItemProps>;
     render(): JSX.Element;
 }
-declare const ActivityItem: typeof ActivityItemJsx;
-export { ActivityItem };
+export {};

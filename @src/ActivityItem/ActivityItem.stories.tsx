@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { ActivityItem } from './ActivityItem';
+import { ActivityItem } from './index';
 
 storiesOf('Atoms/ActivityItem', module).add('default', () => (
   <ActivityItem

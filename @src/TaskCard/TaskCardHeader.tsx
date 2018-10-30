@@ -1,8 +1,6 @@
 import * as React from 'react';
-import * as CSSModules from 'react-css-modules';
 import { FaFileText } from 'react-icons/lib/fa';
 import { Key } from 'ts-keycode-enum';
-import * as s from './style.m.scss';
 
 interface ITaskCardHeaderProps {
   icon?: any;
@@ -17,7 +15,7 @@ interface IState {
   titlePrevious: string;
 }
 
-class TaskCardHeaderJsx extends React.Component<ITaskCardHeaderProps, IState> {
+class TaskCardHeader extends React.Component<ITaskCardHeaderProps, IState> {
   public static defaultProps: Partial<ITaskCardHeaderProps> = {
     icon: <FaFileText />,
     maxLength: 500
@@ -109,7 +107,5 @@ class TaskCardHeaderJsx extends React.Component<ITaskCardHeaderProps, IState> {
     );
   }
 }
-
-const TaskCardHeader = CSSModules(TaskCardHeaderJsx, s);
 
 export { TaskCardHeader, ITaskCardHeaderProps };

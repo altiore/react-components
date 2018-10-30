@@ -3,27 +3,26 @@
   margin: 15px 0;
 }
 
-.activity-item .userpic {
+.userpic {
   height: 32px;
   left: 0;
   position: absolute;
   top: 2px;
   width: 32px;
+  img {
+    height: 32px;
+    width: 32px;
+    border-radius: 25em;
+  }
 }
 
-.activity-item .userpic img {
-  height: 32px;
-  width: 32px;
-  border-radius: 25em;
-}
-
-.activity-item .desciption {
+.description {
   margin: 0 24px 0 40px;
   word-wrap: break-word;
   font-size: 14px;
 }
 
-.activity-item .time {
+.time {
   margin-left: 40px;
   color: #6b808c;
   font-size: 12px;

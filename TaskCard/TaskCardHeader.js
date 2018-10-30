@@ -14,13 +14,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var CSSModules = require("react-css-modules");
 var fa_1 = require("react-icons/lib/fa");
 var ts_keycode_enum_1 = require("ts-keycode-enum");
-var s = require("./style.m.scss");
-var TaskCardHeaderJsx = /** @class */ (function (_super) {
-    __extends(TaskCardHeaderJsx, _super);
-    function TaskCardHeaderJsx(props) {
+var TaskCardHeader = /** @class */ (function (_super) {
+    __extends(TaskCardHeader, _super);
+    function TaskCardHeader(props) {
         var _this = _super.call(this, props) || this;
         _this.TitleInput = null;
         _this.setTitleInputRef = function (element) {
@@ -36,22 +34,22 @@ var TaskCardHeaderJsx = /** @class */ (function (_super) {
         };
         return _this;
     }
-    TaskCardHeaderJsx.prototype.componentDidMount = function () {
+    TaskCardHeader.prototype.componentDidMount = function () {
         this.autoHightTextarea();
     };
-    TaskCardHeaderJsx.prototype.handleTextareaChange = function (e) {
+    TaskCardHeader.prototype.handleTextareaChange = function (e) {
         this.setState({
             title: e.currentTarget.value
         });
         this.autoHightTextarea();
     };
-    TaskCardHeaderJsx.prototype.handleTextareaFocus = function (e) {
+    TaskCardHeader.prototype.handleTextareaFocus = function (e) {
         this.setState({
             titlePrevious: this.state.title
         });
         this.autoHightTextarea();
     };
-    TaskCardHeaderJsx.prototype.handleTextareaKeyDown = function (e) {
+    TaskCardHeader.prototype.handleTextareaKeyDown = function (e) {
         var _this = this;
         if ([ts_keycode_enum_1.Key.Enter, ts_keycode_enum_1.Key.Escape].indexOf(e.keyCode) !== -1) {
             var props = {
@@ -71,22 +69,21 @@ var TaskCardHeaderJsx = /** @class */ (function (_super) {
         }
         this.autoHightTextarea();
     };
-    TaskCardHeaderJsx.prototype.autoHightTextarea = function () {
+    TaskCardHeader.prototype.autoHightTextarea = function () {
         this.TitleInput.style.height = 'auto';
         this.TitleInput.style.height = this.TitleInput.scrollHeight + 'px';
     };
-    TaskCardHeaderJsx.prototype.render = function () {
+    TaskCardHeader.prototype.render = function () {
         var _a = this.props, icon = _a.icon, maxLength = _a.maxLength;
         return (React.createElement("div", { styleName: "task-card-header" },
             icon || null,
             React.createElement("textarea", { value: this.state.title, maxLength: maxLength, placeholder: "(empty)", ref: this.setTitleInputRef, rows: 1, onChange: this.handleTextareaChange, onFocus: this.handleTextareaFocus, onKeyDown: this.handleTextareaKeyDown })));
     };
-    TaskCardHeaderJsx.defaultProps = {
+    TaskCardHeader.defaultProps = {
         icon: React.createElement(fa_1.FaFileText, null),
         maxLength: 500
     };
-    return TaskCardHeaderJsx;
+    return TaskCardHeader;
 }(React.Component));
-var TaskCardHeader = CSSModules(TaskCardHeaderJsx, s);
 exports.TaskCardHeader = TaskCardHeader;
 //# sourceMappingURL=TaskCardHeader.js.map

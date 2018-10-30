@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { FaAlignJustify, FaClose } from 'react-icons/lib/fa';
 import { Button } from '../Button';
-import { ActivityList } from './ActivityList';
-import { TaskCardHeader } from './TaskCardHeader';
+import { ActivityList } from './index';
+import { TaskCardHeader } from './index';
 
 export interface ITaskCardProps {
   title: string;

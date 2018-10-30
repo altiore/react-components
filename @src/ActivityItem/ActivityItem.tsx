@@ -1,10 +1,5 @@
 import * as moment from 'moment';
 import * as React from 'react';
-import CSSModules = require('react-css-modules');
-import * as s from './style.m.scss';
-
-require('moment/locale/ru');
-moment.locale('ru');
 
 interface IActivityItemProps {
   delimiter?: boolean;
@@ -14,7 +9,11 @@ interface IActivityItemProps {
   userPic: string;
 }
 
-class ActivityItemJsx extends React.PureComponent<IActivityItemProps, any> {
+export class ActivityItem extends React.PureComponent<IActivityItemProps, any> {
+  public static defaultProps: Partial<IActivityItemProps> = {
+    delimiter: false
+  };
+
   public render() {
     const { delimiter, description, time, userName, userPic } = this.props;
 
@@ -24,10 +23,10 @@ class ActivityItemJsx extends React.PureComponent<IActivityItemProps, any> {
           <div styleName="userpic">
             <img src={userPic} alt={userName} />
           </div>
-          <div styleName="desciption">
+          <div styleName="description">
             <b>{userName}</b> {description}
           </div>
-          <div styleName="time">
+          <div styleName="time" title={moment(time).format()}>
             {moment(time)
               .startOf('second')
               .fromNow()}
@@ -38,6 +37,3 @@ class ActivityItemJsx extends React.PureComponent<IActivityItemProps, any> {
     );
   }
 }
-
-const ActivityItem = CSSModules(ActivityItemJsx, s);
-export { ActivityItem };

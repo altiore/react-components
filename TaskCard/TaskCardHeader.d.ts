@@ -10,7 +10,7 @@ interface IState {
     title: string;
     titlePrevious: string;
 }
-declare class TaskCardHeaderJsx extends React.Component<ITaskCardHeaderProps, IState> {
+declare class TaskCardHeader extends React.Component<ITaskCardHeaderProps, IState> {
     static defaultProps: Partial<ITaskCardHeaderProps>;
     TitleInput: any;
     setTitleInputRef: (el: any) => void;
@@ -22,5 +22,4 @@ declare class TaskCardHeaderJsx extends React.Component<ITaskCardHeaderProps, IS
     autoHightTextarea(): void;
     render(): JSX.Element;
 }
-declare const TaskCardHeader: typeof TaskCardHeaderJsx;
 export { TaskCardHeader, ITaskCardHeaderProps };

@@ -1,8 +1,6 @@
 import * as React from 'react';
-import * as CSSModules from 'react-css-modules';
 import { FaList } from 'react-icons/lib/fa';
 import { ActivityItem } from '../ActivityItem';
-import * as s from './style.m.scss';
 
 interface IActivityListProps {
   list?: any;
@@ -14,7 +12,7 @@ interface IState {
   toggleActionTitle?: string;
 }
 
-class ActivityListJsx extends React.Component<IActivityListProps, IState> {
+class ActivityList extends React.Component<IActivityListProps, IState> {
   public static defaultProps: Partial<IActivityListProps> = {
     visible: true
   };
@@ -62,7 +60,5 @@ class ActivityListJsx extends React.Component<IActivityListProps, IState> {
     );
   }
 }
-
-const ActivityList = CSSModules(ActivityListJsx, s);
 
 export { ActivityList, IActivityListProps };

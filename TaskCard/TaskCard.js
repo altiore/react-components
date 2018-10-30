@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var fa_1 = require("react-icons/lib/fa");
 var Button_1 = require("../Button");
-var ActivityList_1 = require("./ActivityList");
-var TaskCardHeader_1 = require("./TaskCardHeader");
+var index_1 = require("./index");
+var index_2 = require("./index");
 var TaskCard = /** @class */ (function (_super) {
     __extends(TaskCard, _super);
     function TaskCard(props) {
@@ -36,9 +36,9 @@ var TaskCard = /** @class */ (function (_super) {
         var _a = this.props, isModal = _a.isModal, title = _a.title;
         return (React.createElement(React.Fragment, null,
             isModal && React.createElement("div", { styleName: "body-overlay" }),
-            React.createElement("div", { styleName: isModal ? "task-card-wrapper-modal" : undefined },
+            React.createElement("div", { styleName: isModal ? 'task-card-wrapper-modal' : undefined },
                 React.createElement("div", { styleName: "task-card" },
-                    React.createElement(TaskCardHeader_1.TaskCardHeader, { title: title }),
+                    React.createElement(index_2.TaskCardHeader, { title: title }),
                     React.createElement("a", { href: "#", styleName: "button-close", onClick: this.handleCloseClick },
                         React.createElement(fa_1.FaClose, null)),
                     React.createElement("div", { styleName: "task-details-container" },
@@ -49,7 +49,7 @@ var TaskCard = /** @class */ (function (_super) {
                                     " \u0414\u0435\u0442\u0430\u043B\u0438"),
                                 React.createElement("div", { styleName: "details-container" })),
                             React.createElement("div", { styleName: "container" },
-                                React.createElement(ActivityList_1.ActivityList, { list: this.props.activityList }))),
+                                React.createElement(index_1.ActivityList, { list: this.props.activityList }))),
                         React.createElement("div", { styleName: "actions" },
                             React.createElement("div", { styleName: "action-block" },
                                 React.createElement("h3", null, "\u0414\u0435\u0439\u0441\u0442\u0432\u0438\u044F"),
