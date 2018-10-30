@@ -19,9 +19,6 @@ var ColoredListItem = /** @class */ (function (_super) {
     function ColoredListItem(props) {
         var _this = _super.call(this, props) || this;
         _this.onClick = _this.onClick.bind(_this);
-        _this.state = {
-            filterKw: ''
-        };
         return _this;
     }
     ColoredListItem.prototype.onClick = function (e) {

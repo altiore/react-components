@@ -45,7 +45,11 @@ var ListBox = /** @class */ (function (_super) {
         var filterKw = this.state.filterKw;
         return (React.createElement("div", { styleName: 'wrapper' + (flat ? '-flat' : '') },
             filter && (React.createElement(Input_1.Input, { icon: React.createElement(fa_1.FaSearch, null), input: { name: 'filterKw', onChange: this.onFilterChange }, meta: {}, placeholder: 'Поиск...' })),
-            React.createElement("div", { styleName: "list" }, items.filter(function (item) { return item.title.toLowerCase().indexOf(filterKw.toLowerCase()) !== -1; }).map(function (item) { return (React.createElement(ColoredListItem_1.ColoredListItem, { item: item, onClick: onSelect })); })),
+            React.createElement("div", { styleName: "list" }, items
+                .filter(function (item) {
+                return item.title.toLowerCase().indexOf(filterKw.toLowerCase()) !== -1;
+            })
+                .map(function (item, i) { return (React.createElement(ColoredListItem_1.ColoredListItem, { key: i, item: item, onClick: onSelect })); })),
             addNew && (React.createElement("div", { styleName: "add-container" },
                 React.createElement(Button_1.Button, { onClick: this.onAddNewClick },
                     React.createElement("span", null,
@@ -55,7 +59,7 @@ var ListBox = /** @class */ (function (_super) {
     ListBox.defaultProps = {
         addNew: false,
         filter: false,
-        flat: false,
+        flat: false
     };
     return ListBox;
 }(React.Component));

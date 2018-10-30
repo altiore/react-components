@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IProps } from "../Button/Button";
+import { IProps } from '../Button/Button';
 export interface IListBoxProps {
     addNew?: boolean;
     filter?: boolean;

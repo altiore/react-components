@@ -10,10 +10,6 @@ export class ColoredListItem extends React.Component<IColoredListItemProps, any>
     super(props);
 
     this.onClick = this.onClick.bind(this);
-
-    this.state = {
-      filterKw: ''
-    };
   }
 
   public onClick(e: React.MouseEvent<Element>) {
