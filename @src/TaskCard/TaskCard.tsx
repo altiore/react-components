@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { FaAlignJustify, FaClose } from 'react-icons/lib/fa';
-import { Button } from '../Button';
-import { ActivityList } from './index';
-import { TaskCardHeader } from './index';
+const FaClose = require('react-icons/lib/fa/close');
+const FaAlignJustify = require('react-icons/lib/fa/align-justify');
+
+import { ActivityList, TaskCardHeader } from './index';
 
 export interface ITaskCardProps {
+  actions: JSX.Element[];
   title: string;
   isModal?: boolean;
   onClose?: (e: React.MouseEvent<HTMLElement>) => void;
@@ -27,7 +28,7 @@ export class TaskCard extends React.Component<ITaskCardProps, any> {
   }
 
   public render() {
-    const { isModal, title } = this.props;
+    const { actions, isModal, title } = this.props;
     return (
       <React.Fragment>
         {isModal && <div styleName="body-overlay" />}
@@ -57,28 +58,7 @@ export class TaskCard extends React.Component<ITaskCardProps, any> {
                 {/*demo data*/}
                 <div styleName="action-block">
                   <h3>Действия</h3>
-                  <ul styleName="actions">
-                    <li>
-                      <Button type="submit" stretch primary>
-                        <span>Участники</span>
-                      </Button>
-                    </li>
-                    <li>
-                      <Button type="submit" stretch primary>
-                        <span>Метки</span>
-                      </Button>
-                    </li>
-                    <li>
-                      <Button type="submit" stretch primary>
-                        <span>Контрольный список</span>
-                      </Button>
-                    </li>
-                    <li>
-                      <Button type="submit" stretch primary>
-                        <span>Вложения</span>
-                      </Button>
-                    </li>
-                  </ul>
+                  <ul styleName="actions">{actions.map(action => <li>{action}</li>)}</ul>
                 </div>
               </div>
             </div>
