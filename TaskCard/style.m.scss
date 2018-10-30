@@ -1,0 +1,187 @@
+$taskCardMainTextColor: #17394d;
+$actionColor: #6b808c;
+
+.body-overlay {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.task-card-wrapper-modal {
+  text-align: center;
+}
+
+.task-card {
+  color: $taskCardMainTextColor;
+  display: inline-block;
+  max-width: 768px;
+  min-height: 600px;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  width: 90%;
+  background-color: #ebeef0;
+  z-index: 25;
+  text-align: left;
+  padding: 15px 25px;
+}
+
+.task-card-wrapper-modal .task-card {
+  margin: 48px 0 80px;
+}
+
+.task-card-header {
+  display: block;
+  position: relative;
+  min-height: 50px;
+  width: 92%;
+}
+
+.task-card-header svg {
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+
+.task-card-header textarea {
+  color: $taskCardMainTextColor;
+  box-sizing: border-box;
+  resize: none;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  min-height: 32px;
+  height: auto;
+  width: 100%;
+  margin: 2px 0 0 20px;
+  padding: 4px;
+  font-size: 20px;
+  font-weight: 700;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: none;
+  line-height: 24px;
+  outline: none;
+}
+
+.task-card-header textarea:focus {
+  background: #fff;
+  border: 1px solid #5ba4cf;
+  box-shadow: 0 0 0 1px #5ba4cf;
+}
+
+.button-close {
+  color: $actionColor;
+  border-radius: 50%;
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 32px;
+  overflow: hidden;
+  padding: 4px;
+  margin: 4px;
+  width: 32px;
+  z-index: 2;
+  transition: background-color .1s, color .1s;
+  text-decoration: underline;
+}
+
+.button-close:hover {
+  color: $taskCardMainTextColor;
+  background-color: rgba(9,45,66,.13);
+}
+
+.button-close svg {
+  margin: 6px 0 0 6px;
+}
+
+.task-details-container {
+  margin-top: 30px;
+}
+
+@media only screen and (min-width: 640px) {
+  .task-details-container {
+    display: flex;
+  }
+}
+
+.task-details {
+  flex: 5;
+  margin: 0 2px 2px 0;
+}
+
+.task-details h3 {
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.task-details > .container {
+  margin: 0 0 40px 0;
+}
+
+.task-details .details-container {
+  margin-top: 10px;
+  min-height: 100px;
+  border: 1px dashed $actionColor;
+}
+
+.actions {
+  flex: 1;
+  margin: 0 2px 2px 0;
+  padding-left: 10px;
+}
+
+.actions .action-block {
+  margin: 0 0 10px 0;
+}
+
+.actions .action-block ul.actions {
+  list-style: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
+.actions .action-block ul.actions > li {
+  margin: 5px 0;
+}
+
+.actions .action-block h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+  color: $actionColor;
+}
+
+.activity-list-container {
+  margin-top: 10px;
+}
+
+.activity-list-container .header {
+  margin-top: 10px;
+}
+
+.activity-list-container .header h3 {
+  display: inline-block;
+}
+
+.activity-list-container .header a {
+  display: inline-block;
+  float: right;
+  color: $actionColor;
+}
+
+.activity-list-container .list {
+  margin-top: 10px;
+}
+
+.activity-list-container .no-activity {
+  text-align: center;
+  margin: 20px 0;
+}
