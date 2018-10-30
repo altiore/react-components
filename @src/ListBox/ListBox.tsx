@@ -72,7 +72,9 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
               (item: { color: string; title: string }) =>
                 item.title.toLowerCase().indexOf(filterKw.toLowerCase()) !== -1
             )
-            .map((item: { color: string; title: string }) => <ColoredListItem item={item} onClick={onSelect} />)}
+            .map((item: { color: string; title: string }, i) => (
+              <ColoredListItem key={i} item={item} onClick={onSelect} />
+            ))}
         </div>
 
         {addNew && (
