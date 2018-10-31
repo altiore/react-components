@@ -76,7 +76,6 @@ jobs:
     - run: git config user.name "CI"
     - run: git config user.email "razvanlomov@gmail.com"
     - run: npm version patch
-    - run: git push origin master
     - run: git push --tags
 
   publish:
@@ -120,15 +119,14 @@ workflows:
   build-deploy:
     jobs:
     - build
+        filters:
+          branches:
+            ignore: master
     - version:
-        requires:
-        - build
         filters:
           branches:
             only: master
     - publish:
-        requires:
-        - build
         filters:
           tags:
             only: /^v.*/
