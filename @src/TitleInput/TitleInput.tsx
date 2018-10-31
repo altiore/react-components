@@ -73,6 +73,7 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
     this.setState({
       currentValue: e.currentTarget.value
     });
+    this.props.input.onChange(e.currentTarget.value);
     this.autoHeightTextarea();
   }
 
@@ -135,7 +136,6 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
         this.setState({
           previousValue: this.state.currentValue
         });
-        this.props.input.onChange(this.state.currentValue);
         if (callback) {
           callback();
         }

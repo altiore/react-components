@@ -64,6 +64,7 @@ var TitleInput = /** @class */ (function (_super) {
         this.setState({
             currentValue: e.currentTarget.value
         });
+        this.props.input.onChange(e.currentTarget.value);
         this.autoHeightTextarea();
     };
     TitleInput.prototype.handleTextareaFocus = function (e) {
@@ -117,7 +118,6 @@ var TitleInput = /** @class */ (function (_super) {
                 _this.setState({
                     previousValue: _this.state.currentValue
                 });
-                _this.props.input.onChange(_this.state.currentValue);
                 if (callback) {
                     callback();
                 }
