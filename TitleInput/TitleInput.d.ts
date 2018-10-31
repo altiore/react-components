@@ -13,7 +13,6 @@ interface ITitleInputProps {
     getTextarea?: (ref: HTMLTextAreaElement) => void;
 }
 interface IState {
-    currentValue: string;
     height: number;
     previousValue: string;
 }
@@ -30,7 +29,7 @@ declare class TitleInput extends React.Component<ITitleInputProps & WrappedField
     handleTextareaKeyUp(e: React.KeyboardEvent<HTMLTextAreaElement>): void;
     applyCurrentValue(): void;
     restorePreviousValue(): void;
-    updateInputState(state: object, callback?: () => any): void;
+    updateInputState(callback?: () => any): void;
     autoHeightTextarea(): void;
     render(): JSX.Element;
 }

@@ -18,7 +18,6 @@ interface ITitleInputProps {
 }
 
 interface IState {
-  currentValue: string;
   height: number;
   previousValue: string;
 }
@@ -50,7 +49,6 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
     this.handleTextareaKeyUp = this.handleTextareaKeyUp.bind(this);
 
     this.state = {
-      currentValue: (this.props.input.value || '').trim(),
       height: TEXT_HEIGHT,
       previousValue: (this.props.input.value || '').trim()
     };
@@ -70,17 +68,11 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
 
   public handleTextareaChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
     e.preventDefault();
-    this.setState({
-      currentValue: e.currentTarget.value
-    });
-    this.props.input.onChange(e.currentTarget.value);
+    this.props.input.onChange(e.target.value);
     this.autoHeightTextarea();
   }
 
   public handleTextareaFocus(e: React.FocusEvent<HTMLTextAreaElement>) {
-    this.setState({
-      previousValue: this.state.currentValue
-    });
     this.autoHeightTextarea();
   }
 
@@ -110,37 +102,28 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
   }
 
   public applyCurrentValue() {
-    this.updateInputState(
-      {
-        currentValue: (this.state.currentValue || '').trim()
-      },
-      () => {
-        if (this.props.onSubmit) {
-          this.props.onSubmit();
-        }
+    this.updateInputState(() => {
+      if (this.props.onSubmit) {
+        this.props.onSubmit();
       }
-    );
+    });
   }
 
   public restorePreviousValue() {
-    this.updateInputState({
-      currentValue: (this.state.previousValue || '').trim()
-    });
+    this.updateInputState();
   }
 
-  public updateInputState(state: object, callback?: () => any) {
-    this.setState(state, () => {
-      this.titleInputRef.blur();
-      this.autoHeightTextarea();
-      if (this.state.currentValue !== this.state.previousValue) {
-        this.setState({
-          previousValue: this.state.currentValue
-        });
-        if (callback) {
-          callback();
-        }
+  public updateInputState(callback?: () => any) {
+    this.titleInputRef.blur();
+    this.autoHeightTextarea();
+    if (this.props.input.value !== this.state.previousValue) {
+      this.setState({
+        previousValue: this.props.input.value
+      });
+      if (callback) {
+        callback();
       }
-    });
+    }
   }
 
   public autoHeightTextarea() {
@@ -185,7 +168,6 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
             className={classNameInput || ''}
             {...input}
             maxLength={maxLength}
-            value={this.state.currentValue}
             placeholder={placeholder}
             ref={this.setTitleInputRef}
             rows={1}

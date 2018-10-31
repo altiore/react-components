@@ -43,7 +43,6 @@ var TitleInput = /** @class */ (function (_super) {
         _this.handleTextareaKeyDown = _this.handleTextareaKeyDown.bind(_this);
         _this.handleTextareaKeyUp = _this.handleTextareaKeyUp.bind(_this);
         _this.state = {
-            currentValue: (_this.props.input.value || '').trim(),
             height: TEXT_HEIGHT,
             previousValue: (_this.props.input.value || '').trim()
         };
@@ -61,16 +60,10 @@ var TitleInput = /** @class */ (function (_super) {
     };
     TitleInput.prototype.handleTextareaChange = function (e) {
         e.preventDefault();
-        this.setState({
-            currentValue: e.currentTarget.value
-        });
-        this.props.input.onChange(e.currentTarget.value);
+        this.props.input.onChange(e.target.value);
         this.autoHeightTextarea();
     };
     TitleInput.prototype.handleTextareaFocus = function (e) {
-        this.setState({
-            previousValue: this.state.currentValue
-        });
         this.autoHeightTextarea();
     };
     TitleInput.prototype.handleTextareaKeyDown = function (e) {
@@ -96,33 +89,26 @@ var TitleInput = /** @class */ (function (_super) {
     };
     TitleInput.prototype.applyCurrentValue = function () {
         var _this = this;
-        this.updateInputState({
-            currentValue: (this.state.currentValue || '').trim()
-        }, function () {
+        this.updateInputState(function () {
             if (_this.props.onSubmit) {
                 _this.props.onSubmit();
             }
         });
     };
     TitleInput.prototype.restorePreviousValue = function () {
-        this.updateInputState({
-            currentValue: (this.state.previousValue || '').trim()
-        });
+        this.updateInputState();
     };
-    TitleInput.prototype.updateInputState = function (state, callback) {
-        var _this = this;
-        this.setState(state, function () {
-            _this.titleInputRef.blur();
-            _this.autoHeightTextarea();
-            if (_this.state.currentValue !== _this.state.previousValue) {
-                _this.setState({
-                    previousValue: _this.state.currentValue
-                });
-                if (callback) {
-                    callback();
-                }
+    TitleInput.prototype.updateInputState = function (callback) {
+        this.titleInputRef.blur();
+        this.autoHeightTextarea();
+        if (this.props.input.value !== this.state.previousValue) {
+            this.setState({
+                previousValue: this.props.input.value
+            });
+            if (callback) {
+                callback();
             }
-        });
+        }
     };
     TitleInput.prototype.autoHeightTextarea = function () {
         this.titleInputRef.style.height = 'auto';
@@ -142,7 +128,7 @@ var TitleInput = /** @class */ (function (_super) {
             label && (React.createElement("label", { htmlFor: input.name, className: "label" }, label || input.name)),
             React.createElement("div", { styleName: "input-wrapper", style: { height: wrapperHeight } },
                 icon && React.createElement("div", { styleName: "icon" }, icon),
-                React.createElement("textarea", __assign({ styleName: icon ? 'with-icon' : '', className: classNameInput || '' }, input, { maxLength: maxLength, value: this.state.currentValue, placeholder: placeholder, ref: this.setTitleInputRef, rows: 1, onBlur: this.handleTextareaBlur, onChange: this.handleTextareaChange, onFocus: this.handleTextareaFocus, onKeyDown: this.handleTextareaKeyDown })),
+                React.createElement("textarea", __assign({ styleName: icon ? 'with-icon' : '', className: classNameInput || '' }, input, { maxLength: maxLength, placeholder: placeholder, ref: this.setTitleInputRef, rows: 1, onBlur: this.handleTextareaBlur, onChange: this.handleTextareaChange, onFocus: this.handleTextareaFocus, onKeyDown: this.handleTextareaKeyDown })),
                 touched &&
                     ((error && React.createElement("span", { styleName: "error" }, error)) ||
                         (warning && React.createElement("span", { styleName: "warning" }, warning))))));
