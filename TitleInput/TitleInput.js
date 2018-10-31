@@ -130,7 +130,7 @@ var TitleInput = /** @class */ (function (_super) {
                 _a["" + className] = !!className,
                 _a)), style: { height: label ? wrapperHeight + 19 : wrapperHeight } },
             label && (React.createElement("label", { htmlFor: input.name, className: "label" }, label || input.name)),
-            React.createElement("div", { styleName: "input-wrapper", style: { height: wrapperHeight } },
+            React.createElement("div", { styleName: 'input-wrapper', style: { height: wrapperHeight } },
                 icon && React.createElement("div", { styleName: "icon" }, icon),
                 React.createElement("textarea", __assign({ className: cn(styles.textarea, (_b = {},
                         _b["" + classNameInput] = !!classNameInput,
@@ -138,12 +138,12 @@ var TitleInput = /** @class */ (function (_super) {
                         _b[styles['with-icon']] = icon,
                         _b)) }, input, { maxLength: maxLength, placeholder: placeholder, ref: this.setTitleInputRef, rows: 1, onBlur: this.handleTextareaBlur, onChange: this.handleTextareaChange, onFocus: this.handleTextareaFocus, onKeyDown: this.handleTextareaKeyDown })),
                 touched &&
-                    ((error && React.createElement("span", { className: cn(styles.error, (_c = {},
+                    ((error && (React.createElement("span", { className: cn(styles.error, (_c = {},
                             _c[styles['with-icon']] = icon,
-                            _c)) }, error)) ||
-                        (warning && React.createElement("span", { className: cn(styles.warning, (_d = {},
+                            _c)) }, error))) ||
+                        (warning && (React.createElement("span", { className: cn(styles.warning, (_d = {},
                                 _d[styles['with-icon']] = icon,
-                                _d)) }, warning))))));
+                                _d)) }, warning)))))));
     };
     TitleInput.defaultProps = {
         icon: React.createElement(FaFileText, null),
