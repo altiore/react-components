@@ -1,5 +1,7 @@
 $mainColor: #000;
 $secondaryColor: #333;
+$danger: #dc3545 !default;
+$warning: #ffc107 !default; // hover #E0A800 or #ff8484
 
 .wrapper {
   box-sizing: border-box;
@@ -63,4 +65,20 @@ label {
   color: $secondaryColor;
   display: block;
   font-weight: bold;
+}
+
+.error {
+  color: $danger;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: italic;
+  padding-top: 2px;
+}
+
+.warning {
+  color: $warning;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: italic;
+  padding-top: 2px;
 }

@@ -27,7 +27,7 @@ storiesOf('Atoms/TitleInput', module).add('default', () => (
     <TitleInput
       icon={null}
       input={{ value: 'Title Input', onBlur: action('onBlur'), onChange: action('onChange') } as WrappedFieldInputProps}
-      meta={{} as WrappedFieldMetaProps}
+      meta={{ touched: true, error: 'error' } as WrappedFieldMetaProps}
       placeholder="(empty)"
     />
   </div>

@@ -113,7 +113,14 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
   }
 
   public render() {
-    const { icon, input, label, maxLength, placeholder } = this.props;
+    const {
+      icon,
+      input,
+      label,
+      maxLength,
+      meta: { touched, error, warning },
+      placeholder
+    } = this.props;
 
     return (
       <div styleName="wrapper">
@@ -138,6 +145,9 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
             onKeyDown={this.handleTextareaKeyDown}
           />
         </div>
+        {touched &&
+          ((error && <span styleName="error">{error}</span>) ||
+            (warning && <span styleName="warning">{warning}</span>))}
       </div>
     );
   }
