@@ -12,7 +12,7 @@
   "types": "index.d.ts",
   "scripts": {
     "start": "start-storybook -p 9002",
-    "new:version": "npm version patch && git push && git push --tags",
+    "new:version": "npm version patch && git push --tags",
     "build": "tsc --p tsconfig.prod.json && copyfiles -u 1 @src/**/*.scss . && node scripts/replaseString.js",
     "prepublish": "npm run build",
     "story-static": "build-storybook -o build"
