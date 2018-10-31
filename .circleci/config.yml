@@ -70,7 +70,7 @@ jobs:
     - run: git config user.email "razvanlomov@gmail.com"
     - run: git add .
     - run: git commit -m "FROM CI new build"
-    - run: git push
+    - run: git push origin master
     - run: npm version patch
     - run: npm publish
     - run: git push --tags
