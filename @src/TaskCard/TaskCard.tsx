@@ -1,8 +1,12 @@
 import * as React from 'react';
+
 const FaClose = require('react-icons/lib/fa/close');
 const FaAlignJustify = require('react-icons/lib/fa/align-justify');
 
-import { ActivityList, TaskCardHeader } from './index';
+import { action } from '@storybook/addon-actions';
+import { WrappedFieldInputProps, WrappedFieldMetaProps } from 'redux-form';
+import { TitleInput } from '../TitleInput';
+import { ActivityList } from './index';
 
 export interface ITaskCardProps {
   actions: JSX.Element[];
@@ -34,7 +38,19 @@ export class TaskCard extends React.Component<ITaskCardProps, any> {
         {isModal && <div styleName="body-overlay" />}
         <div styleName={isModal ? 'task-card-wrapper-modal' : undefined}>
           <div styleName="task-card">
-            <TaskCardHeader title={title} />
+            <div styleName="title">
+              <TitleInput
+                input={
+                  {
+                    onBlur: action('onBlur'),
+                    onChange: action('onChange'),
+                    value: title
+                  } as WrappedFieldInputProps
+                }
+                meta={{} as WrappedFieldMetaProps}
+                placeholder="(empty)"
+              />
+            </div>
 
             <a href="#" styleName="button-close" onClick={this.handleCloseClick}>
               <FaClose />
@@ -58,7 +74,7 @@ export class TaskCard extends React.Component<ITaskCardProps, any> {
                 {/*demo data*/}
                 <div styleName="action-block">
                   <h3>Действия</h3>
-                  <ul styleName="actions">{actions.map(action => <li>{action}</li>)}</ul>
+                  <ul styleName="actions">{actions.map((a, i) => <li key={i}>{a}</li>)}</ul>
                 </div>
               </div>
             </div>
