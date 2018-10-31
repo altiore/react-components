@@ -5,21 +5,25 @@ import { Key } from 'ts-keycode-enum';
 const FaFileText = require('react-icons/lib/fa/file-text');
 
 interface ITitleInputProps {
-  wrapperClassName?: string;
+  className?: string;
   input: WrappedFieldInputProps;
   meta: WrappedFieldMetaProps;
   label?: string;
   icon?: any;
   maxLength?: number;
   placeholder?: string;
-  onEnter?: () => void;
+  onSubmit?: () => void;
   getTextarea?: (ref: HTMLTextAreaElement) => void;
 }
 
 interface IState {
   currentValue: string;
+  height: number;
   previousValue: string;
 }
+
+const TEXT_HEIGHT = 34;
+const ERROR_HEIGHT = 12;
 
 class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, IState> {
   public static defaultProps: Partial<ITitleInputProps> = {
@@ -46,12 +50,13 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
 
     this.state = {
       currentValue: (this.props.input.value || '').trim(),
+      height: TEXT_HEIGHT,
       previousValue: (this.props.input.value || '').trim()
     };
   }
 
   public componentDidMount() {
-    this.autoHightTextarea();
+    this.autoHeightTextarea();
     if (this.props.getTextarea) {
       this.props.getTextarea(this.titleInputRef);
     }
@@ -67,14 +72,14 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
     this.setState({
       currentValue: e.currentTarget.value
     });
-    this.autoHightTextarea();
+    this.autoHeightTextarea();
   }
 
   public handleTextareaFocus(e: React.FocusEvent<HTMLTextAreaElement>) {
     this.setState({
       previousValue: this.state.currentValue
     });
-    this.autoHightTextarea();
+    this.autoHeightTextarea();
   }
 
   public handleTextareaKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
@@ -82,9 +87,6 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
       case Key.Enter:
         e.preventDefault();
         this.applyCurrentValue();
-        if (this.props.onEnter) {
-          this.props.onEnter();
-        }
         break;
 
       case Key.Escape:
@@ -93,7 +95,7 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
         break;
 
       default:
-        this.autoHightTextarea();
+        this.autoHeightTextarea();
         break;
     }
   }
@@ -106,9 +108,16 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
   }
 
   public applyCurrentValue() {
-    this.updateInputState({
-      currentValue: (this.state.currentValue || '').trim()
-    });
+    this.updateInputState(
+      {
+        currentValue: (this.state.currentValue || '').trim()
+      },
+      () => {
+        if (this.props.onSubmit) {
+          this.props.onSubmit();
+        }
+      }
+    );
   }
 
   public restorePreviousValue() {
@@ -117,27 +126,36 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
     });
   }
 
-  public updateInputState(state: object) {
+  public updateInputState(state: object, callback?: () => any) {
     this.setState(state, () => {
       this.titleInputRef.blur();
-      this.autoHightTextarea();
+      this.autoHeightTextarea();
       if (this.state.currentValue !== this.state.previousValue) {
         this.setState({
           previousValue: this.state.currentValue
         });
         this.props.input.onChange(this.state.currentValue);
+        if (callback) {
+          callback();
+        }
       }
     });
   }
 
-  public autoHightTextarea() {
+  public autoHeightTextarea() {
     this.titleInputRef.style.height = 'auto';
-    this.titleInputRef.style.height = this.titleInputRef.scrollHeight + 'px';
+    if (this.titleInputRef.scrollHeight > TEXT_HEIGHT) {
+      this.titleInputRef.style.height = this.titleInputRef.scrollHeight + 'px';
+      this.setState({ height: this.titleInputRef.scrollHeight + ERROR_HEIGHT });
+    } else {
+      this.titleInputRef.style.height = TEXT_HEIGHT + 'px';
+      this.setState({ height: TEXT_HEIGHT + ERROR_HEIGHT });
+    }
   }
 
   public render() {
     const {
-      wrapperClassName,
+      className,
       icon,
       input,
       label,
@@ -146,30 +164,33 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
       placeholder
     } = this.props;
 
+    const wrapperHeight = this.state.height;
     return (
-      <div styleName={wrapperClassName || ''}>
-        <div styleName={'wrapper' + (label ? '-with-label' : '')}>
-          {label && (
-            <label htmlFor={input.name} className="label">
-              {label || input.name}
-            </label>
-          )}
-          <div styleName="input-wrapper">
-            {icon && <div styleName="icon">{icon}</div>}
-            <textarea
-              styleName={icon ? ' with-icon' : ''}
-              {...input}
-              maxLength={maxLength}
-              value={this.state.currentValue}
-              placeholder={placeholder}
-              ref={this.setTitleInputRef}
-              rows={1}
-              onBlur={this.handleTextareaBlur}
-              onChange={this.handleTextareaChange}
-              onFocus={this.handleTextareaFocus}
-              onKeyDown={this.handleTextareaKeyDown}
-            />
-          </div>
+      <div
+        styleName={'wrapper'}
+        className={className || ''}
+        style={{ height: label ? wrapperHeight + 19 : wrapperHeight }}
+      >
+        {label && (
+          <label htmlFor={input.name} className="label">
+            {label || input.name}
+          </label>
+        )}
+        <div styleName="input-wrapper" style={{ height: wrapperHeight }}>
+          {icon && <div styleName="icon">{icon}</div>}
+          <textarea
+            styleName={icon ? 'with-icon' : ''}
+            {...input}
+            maxLength={maxLength}
+            value={this.state.currentValue}
+            placeholder={placeholder}
+            ref={this.setTitleInputRef}
+            rows={1}
+            onBlur={this.handleTextareaBlur}
+            onChange={this.handleTextareaChange}
+            onFocus={this.handleTextareaFocus}
+            onKeyDown={this.handleTextareaKeyDown}
+          />
           {touched &&
             ((error && <span styleName="error">{error}</span>) ||
               (warning && <span styleName="warning">{warning}</span>))}

@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { WrappedFieldInputProps, WrappedFieldMetaProps, WrappedFieldProps } from 'redux-form/lib/Field';
 interface ITitleInputProps {
-    wrapperClassName?: string;
+    className?: string;
     input: WrappedFieldInputProps;
     meta: WrappedFieldMetaProps;
     label?: string;
     icon?: any;
     maxLength?: number;
     placeholder?: string;
-    onEnter?: () => void;
+    onSubmit?: () => void;
     getTextarea?: (ref: HTMLTextAreaElement) => void;
 }
 interface IState {
     currentValue: string;
+    height: number;
     previousValue: string;
 }
 declare class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, IState> {
@@ -28,8 +29,8 @@ declare class TitleInput extends React.Component<ITitleInputProps & WrappedField
     handleTextareaKeyUp(e: React.KeyboardEvent<HTMLTextAreaElement>): void;
     applyCurrentValue(): void;
     restorePreviousValue(): void;
-    updateInputState(state: object): void;
-    autoHightTextarea(): void;
+    updateInputState(state: object, callback?: () => any): void;
+    autoHeightTextarea(): void;
     render(): JSX.Element;
 }
 export { TitleInput, ITitleInputProps };

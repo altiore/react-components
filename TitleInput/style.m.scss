@@ -7,21 +7,50 @@ $warning: #ffc107 !default; // hover #E0A800 or #ff8484
   box-sizing: border-box;
   display: block;
   position: relative;
-  min-height: 56px;
   width: 100%;
-}
-
-.wrapper-with-label {
-  @extend .wrapper;
-  min-height: 74px;
 }
 
 .input-wrapper {
   box-sizing: border-box;
   display: block;
   position: relative;
-  min-height: 36px;
   width: 100%;
+  textarea {
+    color: $mainColor;
+    box-sizing: border-box;
+    resize: none;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    min-height: 32px;
+    height: auto;
+    width: 100%;
+    margin: 1px;
+    padding: 4px;
+    font-size: 20px;
+    font-weight: 700;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: none;
+    line-height: 24px;
+    outline: none;
+    &.with-icon {
+      margin-left: 20px;
+      width: calc(100% - 20px);
+    }
+  }
+
+  textarea:focus {
+    background: #fff;
+    border: 1px solid #5ba4cf;
+    box-shadow: 0 0 0 1px #5ba4cf;
+  }
+
+  label {
+    color: $secondaryColor;
+    display: block;
+    font-weight: bold;
+  }
 }
 
 .icon {
@@ -36,49 +65,17 @@ $warning: #ffc107 !default; // hover #E0A800 or #ff8484
   }
 }
 
-textarea {
-  color: $mainColor;
-  box-sizing: border-box;
-  resize: none;
-  overflow: hidden;
-  overflow-wrap: break-word;
-  min-height: 32px;
-  height: auto;
-  width: 100%;
-  margin: 1px;
-  padding: 4px;
-  font-size: 20px;
-  font-weight: 700;
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  box-shadow: none;
-  line-height: 24px;
-  outline: none;
-  &.with-icon {
-    margin-left: 20px;
-    width: calc(100% - 20px);
-  }
-}
-
-textarea:focus {
-  background: #fff;
-  border: 1px solid #5ba4cf;
-  box-shadow: 0 0 0 1px #5ba4cf;
-}
-
-label {
-  color: $secondaryColor;
-  display: block;
-  font-weight: bold;
-}
-
 .error {
   color: $danger;
   font-size: 12px;
   font-weight: 500;
   font-style: italic;
-  padding-top: 2px;
+  position: absolute;
+  bottom: -3px;
+  left: 6px;
+  &.with-icon {
+    left: 26px;
+  }
 }
 
 .warning {

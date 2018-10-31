@@ -27,6 +27,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var ts_keycode_enum_1 = require("ts-keycode-enum");
 var FaFileText = require('react-icons/lib/fa/file-text');
+var TEXT_HEIGHT = 34;
+var ERROR_HEIGHT = 12;
 var TitleInput = /** @class */ (function (_super) {
     __extends(TitleInput, _super);
     function TitleInput(props) {
@@ -42,12 +44,13 @@ var TitleInput = /** @class */ (function (_super) {
         _this.handleTextareaKeyUp = _this.handleTextareaKeyUp.bind(_this);
         _this.state = {
             currentValue: (_this.props.input.value || '').trim(),
+            height: TEXT_HEIGHT,
             previousValue: (_this.props.input.value || '').trim()
         };
         return _this;
     }
     TitleInput.prototype.componentDidMount = function () {
-        this.autoHightTextarea();
+        this.autoHeightTextarea();
         if (this.props.getTextarea) {
             this.props.getTextarea(this.titleInputRef);
         }
@@ -61,29 +64,26 @@ var TitleInput = /** @class */ (function (_super) {
         this.setState({
             currentValue: e.currentTarget.value
         });
-        this.autoHightTextarea();
+        this.autoHeightTextarea();
     };
     TitleInput.prototype.handleTextareaFocus = function (e) {
         this.setState({
             previousValue: this.state.currentValue
         });
-        this.autoHightTextarea();
+        this.autoHeightTextarea();
     };
     TitleInput.prototype.handleTextareaKeyDown = function (e) {
         switch (e.keyCode) {
             case ts_keycode_enum_1.Key.Enter:
                 e.preventDefault();
                 this.applyCurrentValue();
-                if (this.props.onEnter) {
-                    this.props.onEnter();
-                }
                 break;
             case ts_keycode_enum_1.Key.Escape:
                 e.preventDefault();
                 this.restorePreviousValue();
                 break;
             default:
-                this.autoHightTextarea();
+                this.autoHeightTextarea();
                 break;
         }
     };
@@ -94,8 +94,13 @@ var TitleInput = /** @class */ (function (_super) {
         }
     };
     TitleInput.prototype.applyCurrentValue = function () {
+        var _this = this;
         this.updateInputState({
             currentValue: (this.state.currentValue || '').trim()
+        }, function () {
+            if (_this.props.onSubmit) {
+                _this.props.onSubmit();
+            }
         });
     };
     TitleInput.prototype.restorePreviousValue = function () {
@@ -103,31 +108,41 @@ var TitleInput = /** @class */ (function (_super) {
             currentValue: (this.state.previousValue || '').trim()
         });
     };
-    TitleInput.prototype.updateInputState = function (state) {
+    TitleInput.prototype.updateInputState = function (state, callback) {
         var _this = this;
         this.setState(state, function () {
             _this.titleInputRef.blur();
-            _this.autoHightTextarea();
+            _this.autoHeightTextarea();
             if (_this.state.currentValue !== _this.state.previousValue) {
                 _this.setState({
                     previousValue: _this.state.currentValue
                 });
                 _this.props.input.onChange(_this.state.currentValue);
+                if (callback) {
+                    callback();
+                }
             }
         });
     };
-    TitleInput.prototype.autoHightTextarea = function () {
+    TitleInput.prototype.autoHeightTextarea = function () {
         this.titleInputRef.style.height = 'auto';
-        this.titleInputRef.style.height = this.titleInputRef.scrollHeight + 'px';
+        if (this.titleInputRef.scrollHeight > TEXT_HEIGHT) {
+            this.titleInputRef.style.height = this.titleInputRef.scrollHeight + 'px';
+            this.setState({ height: this.titleInputRef.scrollHeight + ERROR_HEIGHT });
+        }
+        else {
+            this.titleInputRef.style.height = TEXT_HEIGHT + 'px';
+            this.setState({ height: TEXT_HEIGHT + ERROR_HEIGHT });
+        }
     };
     TitleInput.prototype.render = function () {
-        var _a = this.props, wrapperClassName = _a.wrapperClassName, icon = _a.icon, input = _a.input, label = _a.label, maxLength = _a.maxLength, _b = _a.meta, touched = _b.touched, error = _b.error, warning = _b.warning, placeholder = _a.placeholder;
-        return (React.createElement("div", { styleName: wrapperClassName || '' },
-            React.createElement("div", { styleName: "wrapper" + (label ? "-with-label" : "") },
-                label && (React.createElement("label", { htmlFor: input.name, className: "label" }, label || input.name)),
-                React.createElement("div", { styleName: "input-wrapper" },
-                    icon && React.createElement("div", { styleName: "icon" }, icon),
-                    React.createElement("textarea", __assign({ styleName: icon ? ' with-icon' : '' }, input, { maxLength: maxLength, value: this.state.currentValue, placeholder: placeholder, ref: this.setTitleInputRef, rows: 1, onBlur: this.handleTextareaBlur, onChange: this.handleTextareaChange, onFocus: this.handleTextareaFocus, onKeyDown: this.handleTextareaKeyDown }))),
+        var _a = this.props, className = _a.className, icon = _a.icon, input = _a.input, label = _a.label, maxLength = _a.maxLength, _b = _a.meta, touched = _b.touched, error = _b.error, warning = _b.warning, placeholder = _a.placeholder;
+        var wrapperHeight = this.state.height;
+        return (React.createElement("div", { styleName: 'wrapper', className: className || '', style: { height: label ? wrapperHeight + 19 : wrapperHeight } },
+            label && (React.createElement("label", { htmlFor: input.name, className: "label" }, label || input.name)),
+            React.createElement("div", { styleName: "input-wrapper", style: { height: wrapperHeight } },
+                icon && React.createElement("div", { styleName: "icon" }, icon),
+                React.createElement("textarea", __assign({ styleName: icon ? 'with-icon' : '' }, input, { maxLength: maxLength, value: this.state.currentValue, placeholder: placeholder, ref: this.setTitleInputRef, rows: 1, onBlur: this.handleTextareaBlur, onChange: this.handleTextareaChange, onFocus: this.handleTextareaFocus, onKeyDown: this.handleTextareaKeyDown })),
                 touched &&
                     ((error && React.createElement("span", { styleName: "error" }, error)) ||
                         (warning && React.createElement("span", { styleName: "warning" }, warning))))));
