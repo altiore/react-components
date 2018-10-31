@@ -14,10 +14,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var fa_1 = require("react-icons/lib/fa");
-var Button_1 = require("../Button");
+var FaClose = require('react-icons/lib/fa/close');
+var FaAlignJustify = require('react-icons/lib/fa/align-justify');
+var addon_actions_1 = require("@storybook/addon-actions");
+var TitleInput_1 = require("../TitleInput");
 var index_1 = require("./index");
-var index_2 = require("./index");
 var TaskCard = /** @class */ (function (_super) {
     __extends(TaskCard, _super);
     function TaskCard(props) {
@@ -33,19 +34,24 @@ var TaskCard = /** @class */ (function (_super) {
         }
     };
     TaskCard.prototype.render = function () {
-        var _a = this.props, isModal = _a.isModal, title = _a.title;
+        var _a = this.props, actions = _a.actions, isModal = _a.isModal, title = _a.title;
         return (React.createElement(React.Fragment, null,
             isModal && React.createElement("div", { styleName: "body-overlay" }),
             React.createElement("div", { styleName: isModal ? 'task-card-wrapper-modal' : undefined },
                 React.createElement("div", { styleName: "task-card" },
-                    React.createElement(index_2.TaskCardHeader, { title: title }),
+                    React.createElement("div", { styleName: "title" },
+                        React.createElement(TitleInput_1.TitleInput, { input: {
+                                onBlur: addon_actions_1.action('onBlur'),
+                                onChange: addon_actions_1.action('onChange'),
+                                value: title
+                            }, meta: {}, placeholder: "(empty)" })),
                     React.createElement("a", { href: "#", styleName: "button-close", onClick: this.handleCloseClick },
-                        React.createElement(fa_1.FaClose, null)),
+                        React.createElement(FaClose, null)),
                     React.createElement("div", { styleName: "task-details-container" },
                         React.createElement("div", { styleName: "task-details" },
                             React.createElement("div", { styleName: "container" },
                                 React.createElement("h3", null,
-                                    React.createElement(fa_1.FaAlignJustify, null),
+                                    React.createElement(FaAlignJustify, null),
                                     " \u0414\u0435\u0442\u0430\u043B\u0438"),
                                 React.createElement("div", { styleName: "details-container" })),
                             React.createElement("div", { styleName: "container" },
@@ -53,19 +59,7 @@ var TaskCard = /** @class */ (function (_super) {
                         React.createElement("div", { styleName: "actions" },
                             React.createElement("div", { styleName: "action-block" },
                                 React.createElement("h3", null, "\u0414\u0435\u0439\u0441\u0442\u0432\u0438\u044F"),
-                                React.createElement("ul", { styleName: "actions" },
-                                    React.createElement("li", null,
-                                        React.createElement(Button_1.Button, { type: "submit", stretch: true, primary: true },
-                                            React.createElement("span", null, "\u0423\u0447\u0430\u0441\u0442\u043D\u0438\u043A\u0438"))),
-                                    React.createElement("li", null,
-                                        React.createElement(Button_1.Button, { type: "submit", stretch: true, primary: true },
-                                            React.createElement("span", null, "\u041C\u0435\u0442\u043A\u0438"))),
-                                    React.createElement("li", null,
-                                        React.createElement(Button_1.Button, { type: "submit", stretch: true, primary: true },
-                                            React.createElement("span", null, "\u041A\u043E\u043D\u0442\u0440\u043E\u043B\u044C\u043D\u044B\u0439 \u0441\u043F\u0438\u0441\u043E\u043A"))),
-                                    React.createElement("li", null,
-                                        React.createElement(Button_1.Button, { type: "submit", stretch: true, primary: true },
-                                            React.createElement("span", null, "\u0412\u043B\u043E\u0436\u0435\u043D\u0438\u044F")))))))))));
+                                React.createElement("ul", { styleName: "actions" }, actions.map(function (a, i) { return React.createElement("li", { key: i }, a); })))))))));
     };
     return TaskCard;
 }(React.Component));
