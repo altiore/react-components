@@ -48,6 +48,9 @@ jobs:
     working_directory: ~/repo
 
     steps:
+    - add_ssh_keys:
+        fingerprints:
+        - "94:73:9d:24:71:5e:8c:a3:0c:7a:c0:b6:f1:b5:3f:6e"
     - checkout
 
     # Download and cache dependencies
@@ -70,9 +73,6 @@ jobs:
     - run: git config user.email "razvanlomov@gmail.com"
     - run: git add .
     - run: git commit -m "FROM CI new build"
-    - add_ssh_keys:
-        fingerprints:
-        - "94:73:9d:24:71:5e:8c:a3:0c:7a:c0:b6:f1:b5:3f:6e"
     - run: git push origin master
     - run: npm version patch
     - run: npm publish
