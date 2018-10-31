@@ -1,0 +1,90 @@
+$danger: #dc3545 !default;
+$warning: #ffc107 !default;
+$editor: #092d42 !default;
+$editorActiveBackGround: #FFFFFF !default;
+$editorInactiveText: #6b808c !default;
+
+.area {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.header {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.icon {
+  width: 32px;
+  align-self: center;
+  text-align: center;
+}
+
+.title {
+  width: auto;
+  margin: 0;
+  min-height: 18px;
+  min-width: 40px;
+}
+
+.error {
+  color: $danger;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: italic;
+  padding-top: 2px;
+}
+
+.warning {
+  color: $warning;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: italic;
+  padding-top: 2px;
+}
+
+.wrapper {
+  margin-left: 30px;
+}
+
+.editor {
+  width: 100%;
+  min-height: 40px;
+  font-size: 14px;
+  color: black;
+  cursor: pointer;
+  outline: none;
+  resize: none;
+  border: none;
+  overflow-wrap: break-word;
+  border-radius: 3px;
+}
+
+.active {
+  min-height: 100px;
+  padding: 8px 10px;
+  background: $editorActiveBackGround;
+  border: 1px solid rgba($editor, .13);
+}
+
+.inactive {
+  padding: 8px 10px;
+  color: $editorInactiveText;
+  background-color: rgba($editor, .08);
+
+  &:hover {
+    background-color: rgba($editor, .13);
+  }
+}
+
+.editorWarning {
+  border-color: $danger !important;
+}
+
+.editorError {
+  border-color: $warning !important;
+}
