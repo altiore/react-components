@@ -47,10 +47,6 @@ jobs:
 
     working_directory: ~/repo
 
-    branches:
-      only:
-      - master
-
     steps:
     - checkout
 
@@ -72,6 +68,9 @@ jobs:
     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
     - run: npm version patch
     - run: npm publish
+    - run: git config user.name "CI"
+    - run: git config user.email "razvanlomov@gmail.com"
+    - run: git push --tags
 
 workflows:
   version: 2
