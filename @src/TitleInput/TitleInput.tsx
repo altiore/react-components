@@ -1,3 +1,4 @@
+import * as cn from 'classnames';
 import * as React from 'react';
 import { WrappedFieldInputProps, WrappedFieldMetaProps, WrappedFieldProps } from 'redux-form/lib/Field';
 import { Key } from 'ts-keycode-enum';
@@ -5,6 +6,7 @@ import { Key } from 'ts-keycode-enum';
 const FaFileText = require('react-icons/lib/fa/file-text');
 
 interface ITitleInputProps {
+  bold?: boolean;
   className?: string;
   classNameInput?: string;
   input: WrappedFieldInputProps;
@@ -15,6 +17,7 @@ interface ITitleInputProps {
   placeholder?: string;
   onSubmit?: () => void;
   getTextarea?: (ref: HTMLTextAreaElement) => void;
+  styles?: any;
 }
 
 interface IState {
@@ -139,6 +142,7 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
 
   public render() {
     const {
+      bold,
       className,
       classNameInput,
       icon,
@@ -146,14 +150,16 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
       label,
       maxLength,
       meta: { touched, error, warning },
-      placeholder
+      placeholder,
+      styles
     } = this.props;
 
     const wrapperHeight = this.state.height;
     return (
       <div
-        styleName={'wrapper'}
-        className={className || ''}
+        className={cn(styles.wrapper, {
+          [`${className}`]: !!className
+        })}
         style={{ height: label ? wrapperHeight + 19 : wrapperHeight }}
       >
         {label && (
@@ -161,11 +167,14 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
             {label || input.name}
           </label>
         )}
-        <div styleName="input-wrapper" style={{ height: wrapperHeight }}>
+        <div styleName={'input-wrapper'} style={{ height: wrapperHeight }}>
           {icon && <div styleName="icon">{icon}</div>}
           <textarea
-            styleName={icon ? 'with-icon' : ''}
-            className={classNameInput || ''}
+            className={cn(styles.textarea, {
+              [`${classNameInput}`]: !!classNameInput,
+              [styles.bold]: bold,
+              [styles['with-icon']]: icon
+            })}
             {...input}
             maxLength={maxLength}
             placeholder={placeholder}
@@ -177,8 +186,24 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
             onKeyDown={this.handleTextareaKeyDown}
           />
           {touched &&
-            ((error && <span styleName="error">{error}</span>) ||
-              (warning && <span styleName="warning">{warning}</span>))}
+            ((error && (
+              <span
+                className={cn(styles.error, {
+                  [styles['with-icon']]: icon
+                })}
+              >
+                {error}
+              </span>
+            )) ||
+              (warning && (
+                <span
+                  className={cn(styles.warning, {
+                    [styles['with-icon']]: icon
+                  })}
+                >
+                  {warning}
+                </span>
+              )))}
         </div>
       </div>
     );

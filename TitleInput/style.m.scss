@@ -15,41 +15,48 @@ $warning: #ffc107 !default; // hover #E0A800 or #ff8484
   display: block;
   position: relative;
   width: 100%;
-  textarea {
-    color: $mainColor;
-    box-sizing: border-box;
-    resize: none;
-    overflow: hidden;
-    overflow-wrap: break-word;
-    min-height: 32px;
-    height: auto;
-    width: 100%;
-    margin: 1px;
-    padding: 4px;
-    font-size: 20px;
-    font-weight: 700;
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    box-shadow: none;
-    line-height: 24px;
-    outline: none;
-    &.with-icon {
-      margin-left: 20px;
-      width: calc(100% - 20px);
-    }
-  }
+  &.bold {
 
-  textarea:focus {
-    background: #fff;
-    border: 1px solid #5ba4cf;
-    box-shadow: 0 0 0 1px #5ba4cf;
   }
 
   label {
     color: $secondaryColor;
     display: block;
     font-weight: bold;
+  }
+}
+
+.textarea {
+  color: $mainColor;
+  box-sizing: border-box;
+  resize: none;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  min-height: 32px;
+  height: auto;
+  width: 100%;
+  margin: 1px;
+  padding: 4px;
+  font-size: 18px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: none;
+  line-height: 24px;
+  outline: none;
+  &.with-icon {
+    margin-left: 20px;
+    width: calc(100% - 20px);
+  }
+  &.bold {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &:focus {
+    background: #fff;
+    border: 1px solid #5ba4cf;
+    box-shadow: 0 0 0 1px #5ba4cf;
   }
 }
 

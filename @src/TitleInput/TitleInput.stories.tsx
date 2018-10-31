@@ -99,5 +99,20 @@ storiesOf('Atoms/TitleInput', module).add('default', () => (
       getTextarea={action('getTexarea')}
       onSubmit={action('onSubmit')}
     />
+    <TitleInput
+      bold
+      icon={null}
+      input={
+        {
+          onBlur: action('onBlur'),
+          onChange: action('onChange'),
+          value: 'Title Input'
+        } as WrappedFieldInputProps
+      }
+      meta={{ touched: true, error: 'Some error message' } as WrappedFieldMetaProps}
+      placeholder="(empty)"
+      getTextarea={action('getTexarea')}
+      onSubmit={action('onSubmit')}
+    />
   </div>
 ));
