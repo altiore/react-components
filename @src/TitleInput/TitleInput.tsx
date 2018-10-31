@@ -6,6 +6,7 @@ const FaFileText = require('react-icons/lib/fa/file-text');
 
 interface ITitleInputProps {
   className?: string;
+  classNameInput?: string;
   input: WrappedFieldInputProps;
   meta: WrappedFieldMetaProps;
   label?: string;
@@ -156,6 +157,7 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
   public render() {
     const {
       className,
+      classNameInput,
       icon,
       input,
       label,
@@ -180,6 +182,7 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
           {icon && <div styleName="icon">{icon}</div>}
           <textarea
             styleName={icon ? 'with-icon' : ''}
+            className={classNameInput || ''}
             {...input}
             maxLength={maxLength}
             value={this.state.currentValue}

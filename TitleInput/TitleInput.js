@@ -136,13 +136,13 @@ var TitleInput = /** @class */ (function (_super) {
         }
     };
     TitleInput.prototype.render = function () {
-        var _a = this.props, className = _a.className, icon = _a.icon, input = _a.input, label = _a.label, maxLength = _a.maxLength, _b = _a.meta, touched = _b.touched, error = _b.error, warning = _b.warning, placeholder = _a.placeholder;
+        var _a = this.props, className = _a.className, classNameInput = _a.classNameInput, icon = _a.icon, input = _a.input, label = _a.label, maxLength = _a.maxLength, _b = _a.meta, touched = _b.touched, error = _b.error, warning = _b.warning, placeholder = _a.placeholder;
         var wrapperHeight = this.state.height;
         return (React.createElement("div", { styleName: 'wrapper', className: className || '', style: { height: label ? wrapperHeight + 19 : wrapperHeight } },
             label && (React.createElement("label", { htmlFor: input.name, className: "label" }, label || input.name)),
             React.createElement("div", { styleName: "input-wrapper", style: { height: wrapperHeight } },
                 icon && React.createElement("div", { styleName: "icon" }, icon),
-                React.createElement("textarea", __assign({ styleName: icon ? 'with-icon' : '' }, input, { maxLength: maxLength, value: this.state.currentValue, placeholder: placeholder, ref: this.setTitleInputRef, rows: 1, onBlur: this.handleTextareaBlur, onChange: this.handleTextareaChange, onFocus: this.handleTextareaFocus, onKeyDown: this.handleTextareaKeyDown })),
+                React.createElement("textarea", __assign({ styleName: icon ? 'with-icon' : '', className: classNameInput || '' }, input, { maxLength: maxLength, value: this.state.currentValue, placeholder: placeholder, ref: this.setTitleInputRef, rows: 1, onBlur: this.handleTextareaBlur, onChange: this.handleTextareaChange, onFocus: this.handleTextareaFocus, onKeyDown: this.handleTextareaKeyDown })),
                 touched &&
                     ((error && React.createElement("span", { styleName: "error" }, error)) ||
                         (warning && React.createElement("span", { styleName: "warning" }, warning))))));

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { WrappedFieldInputProps, WrappedFieldMetaProps, WrappedFieldProps } from 'redux-form/lib/Field';
 interface ITitleInputProps {
     className?: string;
+    classNameInput?: string;
     input: WrappedFieldInputProps;
     meta: WrappedFieldMetaProps;
     label?: string;
