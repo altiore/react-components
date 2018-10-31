@@ -1,0 +1,87 @@
+$mainColor: #000;
+$secondaryColor: #333;
+$danger: #dc3545 !default;
+$warning: #ffc107 !default; // hover #E0A800 or #ff8484
+
+.wrapper {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.input-wrapper {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  width: 100%;
+  textarea {
+    color: $mainColor;
+    box-sizing: border-box;
+    resize: none;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    min-height: 32px;
+    height: auto;
+    width: 100%;
+    margin: 1px;
+    padding: 4px;
+    font-size: 20px;
+    font-weight: 700;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: none;
+    line-height: 24px;
+    outline: none;
+    &.with-icon {
+      margin-left: 20px;
+      width: calc(100% - 20px);
+    }
+  }
+
+  textarea:focus {
+    background: #fff;
+    border: 1px solid #5ba4cf;
+    box-shadow: 0 0 0 1px #5ba4cf;
+  }
+
+  label {
+    color: $secondaryColor;
+    display: block;
+    font-weight: bold;
+  }
+}
+
+.icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  * {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    max-width: 16px;
+  }
+}
+
+.error {
+  color: $danger;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: italic;
+  position: absolute;
+  bottom: -3px;
+  left: 6px;
+  &.with-icon {
+    left: 26px;
+  }
+}
+
+.warning {
+  color: $warning;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: italic;
+  padding-top: 2px;
+}

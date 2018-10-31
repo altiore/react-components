@@ -1,5 +1,9 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
+
+import { Button } from '../Button';
+
 import { TaskCard } from './index';
 
 const defaultProps = {
@@ -27,6 +31,14 @@ const defaultProps = {
   ]
 };
 
-storiesOf('Molecules/TaskCard', module)
-  .add('default', () => <TaskCard {...defaultProps} title="Default Card" />)
-  .add('modal', () => <TaskCard {...defaultProps} title="Modal Card" isModal={true} />);
+storiesOf('Molecules/TaskCard', module).add('default', () => (
+  <TaskCard
+    {...defaultProps}
+    title="Default Card"
+    actions={[
+      <Button key={1} onClick={action('Test button click!')} stretch>
+        Участники
+      </Button>
+    ]}
+  />
+));

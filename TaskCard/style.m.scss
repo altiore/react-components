@@ -34,44 +34,8 @@ $actionColor: #6b808c;
   margin: 48px 0 80px;
 }
 
-.task-card-header {
-  display: block;
-  position: relative;
-  min-height: 50px;
-  width: 92%;
-}
-
-.task-card-header svg {
-  position: absolute;
-  left: 0;
-  top: 10px;
-}
-
-.task-card-header textarea {
-  color: $taskCardMainTextColor;
-  box-sizing: border-box;
-  resize: none;
-  overflow: hidden;
-  overflow-wrap: break-word;
-  min-height: 32px;
-  height: auto;
-  width: 100%;
-  margin: 2px 0 0 20px;
-  padding: 4px;
-  font-size: 20px;
-  font-weight: 700;
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  box-shadow: none;
-  line-height: 24px;
-  outline: none;
-}
-
-.task-card-header textarea:focus {
-  background: #fff;
-  border: 1px solid #5ba4cf;
-  box-shadow: 0 0 0 1px #5ba4cf;
+.title {
+  width: 96%;
 }
 
 .button-close {

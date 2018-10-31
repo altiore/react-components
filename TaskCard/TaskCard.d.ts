@@ -1,5 +1,6 @@
 import * as React from 'react';
 export interface ITaskCardProps {
+    actions: JSX.Element[];
     title: string;
     isModal?: boolean;
     onClose?: (e: React.MouseEvent<HTMLElement>) => void;

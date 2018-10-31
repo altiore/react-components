@@ -1,10 +1,15 @@
 import * as React from 'react';
-import { FaAlignJustify, FaClose } from 'react-icons/lib/fa';
-import { Button } from '../Button';
+
+const FaClose = require('react-icons/lib/fa/close');
+const FaAlignJustify = require('react-icons/lib/fa/align-justify');
+
+import { action } from '@storybook/addon-actions';
+import { WrappedFieldInputProps, WrappedFieldMetaProps } from 'redux-form';
+import { TitleInput } from '../TitleInput';
 import { ActivityList } from './index';
-import { TaskCardHeader } from './index';
 
 export interface ITaskCardProps {
+  actions: JSX.Element[];
   title: string;
   isModal?: boolean;
   onClose?: (e: React.MouseEvent<HTMLElement>) => void;
@@ -27,13 +32,25 @@ export class TaskCard extends React.Component<ITaskCardProps, any> {
   }
 
   public render() {
-    const { isModal, title } = this.props;
+    const { actions, isModal, title } = this.props;
     return (
       <React.Fragment>
         {isModal && <div styleName="body-overlay" />}
         <div styleName={isModal ? 'task-card-wrapper-modal' : undefined}>
           <div styleName="task-card">
-            <TaskCardHeader title={title} />
+            <div styleName="title">
+              <TitleInput
+                input={
+                  {
+                    onBlur: action('onBlur'),
+                    onChange: action('onChange'),
+                    value: title
+                  } as WrappedFieldInputProps
+                }
+                meta={{} as WrappedFieldMetaProps}
+                placeholder="(empty)"
+              />
+            </div>
 
             <a href="#" styleName="button-close" onClick={this.handleCloseClick}>
               <FaClose />
@@ -57,28 +74,7 @@ export class TaskCard extends React.Component<ITaskCardProps, any> {
                 {/*demo data*/}
                 <div styleName="action-block">
                   <h3>Действия</h3>
-                  <ul styleName="actions">
-                    <li>
-                      <Button type="submit" stretch primary>
-                        <span>Участники</span>
-                      </Button>
-                    </li>
-                    <li>
-                      <Button type="submit" stretch primary>
-                        <span>Метки</span>
-                      </Button>
-                    </li>
-                    <li>
-                      <Button type="submit" stretch primary>
-                        <span>Контрольный список</span>
-                      </Button>
-                    </li>
-                    <li>
-                      <Button type="submit" stretch primary>
-                        <span>Вложения</span>
-                      </Button>
-                    </li>
-                  </ul>
+                  <ul styleName="actions">{actions.map((a, i) => <li key={i}>{a}</li>)}</ul>
                 </div>
               </div>
             </div>
