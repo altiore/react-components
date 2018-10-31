@@ -23,8 +23,8 @@ storiesOf('Atoms/TextArea', module).add('default', () => (
         input={
           {
             name: 'description',
-            onChange: action('changed'),
             onBlur: action('blur'),
+            onChange: action('changed'),
             onFocus: action('focus')
           } as WrappedFieldInputProps
         }
