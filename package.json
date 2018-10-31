@@ -15,7 +15,7 @@
     "build": "tsc --p tsconfig.prod.json && copyfiles -u 1 @src/**/*.scss . && node scripts/replaseString.js",
     "prepublish": "npm run build",
     "story-static": "build-storybook -o build",
-    "precommit": "lint-staged"
+    "precommit": "npm run build && lint-staged"
   },
   "devDependencies": {
     "@storybook/addon-actions": "3.4.7",
@@ -97,13 +97,15 @@
     ]
   },
   "lint-staged": {
-    "@src/**/*.{ts,tsx}": [
-      "prettier --write --print-width 120 --single-quote --parser typescript",
-      "git add"
-    ],
-    "@src/**/*.{js,json,md}": [
-      "prettier --write --print-width 120 --single-quote",
-      "git add"
-    ]
+    "linters": {
+      "@src/**/*.{ts,tsx}": [
+        "prettier --write --print-width 120 --single-quote --parser typescript",
+        "git add"
+      ],
+      "@src/**/*.{js,json,md}": [
+        "prettier --write --print-width 120 --single-quote",
+        "git add"
+      ]
+    }
   }
 }

@@ -38,7 +38,8 @@ jobs:
 
     # run tests!
     - run: npm run build
-  publish:
+
+  version:
     docker:
     # specify the version you desire here
     - image: circleci/node:8.12.0
@@ -74,21 +75,62 @@ jobs:
     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
     - run: git config user.name "CI"
     - run: git config user.email "razvanlomov@gmail.com"
-    - run: git add .
-    - run: git commit -m "FROM CI new build"
-    - run: git push origin master
     - run: npm version patch
-    - run: npm publish
+    - run: git push origin master
     - run: git push --tags
+
+  publish:
+    docker:
+    # specify the version you desire here
+    - image: circleci/node:8.12.0
+
+    # Specify service dependencies here if necessary
+    # CircleCI maintains a library of pre-built images
+    # documented at https://circleci.com/docs/2.0/circleci-images/
+    # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+
+    steps:
+    - add_ssh_keys:
+        fingerprints:
+        - "94:73:9d:24:71:5e:8c:a3:0c:7a:c0:b6:f1:b5:3f:6e"
+    - checkout
+
+    # Download and cache dependencies
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "package.json" }}
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
+
+    - run: npm install
+
+    - save_cache:
+        paths:
+        - node_modules
+        key: v1-dependencies-{{ checksum "package.json" }}
+
+    # run publish
+    - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+    - run: npm publish
 
 workflows:
   version: 2
   build-deploy:
     jobs:
     - build
-    - publish:
+    - version:
         requires:
         - build
         filters:
           branches:
             only: master
+    - publish:
+        requires:
+        - build
+        filters:
+          tags:
+            only: /^v.*/
+          branches:
+            ignore: /.*/
