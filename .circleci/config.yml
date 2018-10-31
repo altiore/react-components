@@ -69,7 +69,7 @@ jobs:
     - run: git config user.name "CI"
     - run: git config user.email "razvanlomov@gmail.com"
     - run: git add .
-    - run: git commit -m "feat(chore): FROM CI new build"
+    - run: git commit -m "FROM CI new build"
     - run: git push
     - run: npm version patch
     - run: npm publish
