@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { WrappedFieldInputProps, WrappedFieldMetaProps, WrappedFieldProps } from 'redux-form/lib/Field';
-interface ITitleInputProps {
+interface ITitleInputProps extends WrappedFieldProps {
     bold?: boolean;
     className?: string;
     classNameInput?: string;
@@ -18,7 +18,7 @@ interface IState {
     height: number;
     previousValue: string;
 }
-declare class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, IState> {
+declare class TitleInput extends React.Component<ITitleInputProps, IState> {
     static defaultProps: Partial<ITitleInputProps>;
     titleInputRef: any;
     setTitleInputRef: (el: any) => void;

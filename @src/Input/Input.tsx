@@ -3,12 +3,13 @@ import * as React from 'react';
 import { IconBaseProps } from 'react-icon-base';
 import { WrappedFieldProps } from 'redux-form/lib/Field';
 
-export interface InputProps extends React.InputHTMLAttributes<any> {
+export interface InputProps extends WrappedFieldProps {
   icon?: React.ReactElement<IconBaseProps>;
   inputClass?: string;
   showLabel?: boolean;
   type?: string;
   className?: string;
+  label?: string;
   placeholder?: string;
   wrapperClass?: string;
   styles?: {

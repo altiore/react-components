@@ -5,7 +5,7 @@ import { Key } from 'ts-keycode-enum';
 
 const FaFileText = require('react-icons/lib/fa/file-text');
 
-interface ITitleInputProps {
+interface ITitleInputProps extends WrappedFieldProps {
   bold?: boolean;
   className?: string;
   classNameInput?: string;
@@ -28,7 +28,7 @@ interface IState {
 const TEXT_HEIGHT = 34;
 const ERROR_HEIGHT = 12;
 
-class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, IState> {
+class TitleInput extends React.Component<ITitleInputProps, IState> {
   public static defaultProps: Partial<ITitleInputProps> = {
     icon: <FaFileText />,
     maxLength: 500
@@ -113,12 +113,15 @@ class TitleInput extends React.Component<ITitleInputProps & WrappedFieldProps, I
   }
 
   public restorePreviousValue() {
-    this.updateInputState();
+    this.titleInputRef.blur();
+    this.autoHeightTextarea();
+    if (this.props.input.value !== this.state.previousValue) {
+      this.props.input.onChange(this.state.previousValue);
+    }
   }
 
   public updateInputState(callback?: () => any) {
     this.titleInputRef.blur();
-    this.autoHeightTextarea();
     if (this.props.input.value !== this.state.previousValue) {
       this.setState({
         previousValue: this.props.input.value

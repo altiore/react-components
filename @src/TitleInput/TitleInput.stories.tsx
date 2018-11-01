@@ -1,118 +1,92 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { length, required } from 'redux-form-validators';
 
-import { WrappedFieldInputProps, WrappedFieldMetaProps } from 'redux-form';
+import { FormDecorator } from '../../.storybook/decorators';
 import { TitleInput } from './index';
 
-storiesOf('Atoms/TitleInput', module).add('default', () => (
-  <div style={{ width: 600 }}>
-    <TitleInput
-      input={
-        {
-          onBlur: action('onBlur'),
-          onChange: action('onChange'),
-          value: 'Title Input'
-        } as WrappedFieldInputProps
-      }
-      label="Input label"
-      meta={{} as WrappedFieldMetaProps}
-      placeholder="(empty)"
-    />
+const MyFormJsx = (props: any) => ({ handleSubmit }: any) => (
+  <form onSubmit={handleSubmit}>
+    <Field name={'test'} component={TitleInput} {...props} />
+  </form>
+);
 
-    <div style={{ width: 300, borderBottom: '1px solid black' }} />
+const MyForm = (props: any) =>
+  reduxForm({
+    form: 'FormName',
+    onSubmit: action('submit')
+  })(MyFormJsx(props));
 
-    <TitleInput
-      input={
-        {
-          onBlur: action('onBlur'),
-          onChange: action('onChange'),
-          value: 'Title Input'
-        } as WrappedFieldInputProps
-      }
-      label="Input label"
-      meta={{ touched: true, error: 'Some error message' } as WrappedFieldMetaProps}
-      placeholder="(empty)"
-    />
+storiesOf('Atoms/TitleInput', module)
+  .addDecorator(FormDecorator)
+  .add('default', () => {
+    return (
+      <div style={{ width: 600 }}>
+        {React.createElement(
+          MyForm({
+            label: 'Input label',
+            placeholder: '(empty)',
+            validate: [required(), length({ min: 3, max: 255 })],
+            warning: [length({ min: 7 })]
+          })
+        )}
 
-    <div style={{ width: 300, borderBottom: '1px solid black' }} />
+        <div style={{ width: 300, borderBottom: '1px solid black', marginTop: 20 }} />
 
-    <TitleInput
-      input={
-        {
-          onBlur: action('onBlur'),
-          onChange: action('onChange'),
-          value: 'Title Input'
-        } as WrappedFieldInputProps
-      }
-      meta={{} as WrappedFieldMetaProps}
-      placeholder="(empty)"
-    />
+        {React.createElement(
+          MyForm({
+            label: 'Input label',
+            placeholder: '(empty)',
+            validate: [required(), length({ min: 3, max: 255 })],
+            warning: [length({ min: 7 })]
+          })
+        )}
 
-    <div style={{ width: 300, borderBottom: '1px solid black' }} />
+        <div style={{ width: 300, borderBottom: '1px solid black', marginTop: 20 }} />
 
-    <TitleInput
-      icon={null}
-      input={
-        {
-          onBlur: action('onBlur'),
-          onChange: action('onChange'),
-          value: 'Title Input'
-        } as WrappedFieldInputProps
-      }
-      meta={{ touched: true, error: 'Some error message' } as WrappedFieldMetaProps}
-      placeholder="(empty)"
-      getTextarea={action('getTexarea')}
-      onSubmit={action('onSubmit')}
-    />
+        {React.createElement(
+          MyForm({
+            placeholder: '(empty)',
+            validate: [required(), length({ min: 3, max: 255 })],
+            warning: [length({ min: 7 })]
+          })
+        )}
 
-    <div style={{ width: 300, borderBottom: '1px solid black' }} />
+        <div style={{ width: 300, borderBottom: '1px solid black', marginTop: 20 }} />
 
-    <TitleInput
-      icon={null}
-      input={
-        {
-          onBlur: action('onBlur'),
-          onChange: action('onChange'),
-          value: 'Title Input'
-        } as WrappedFieldInputProps
-      }
-      meta={{} as WrappedFieldMetaProps}
-      placeholder="(empty)"
-      getTextarea={action('getTexarea')}
-      onSubmit={action('onSubmit')}
-    />
+        {React.createElement(
+          MyForm({
+            icon: null,
+            placeholder: '(empty)',
+            validate: [required(), length({ min: 3, max: 255 })],
+            warning: [length({ min: 7 })]
+          })
+        )}
 
-    <div style={{ width: 300, borderBottom: '1px solid black' }} />
+        <div style={{ width: 300, borderBottom: '1px solid black', marginTop: 20 }} />
 
-    <TitleInput
-      icon={null}
-      input={
-        {
-          onBlur: action('onBlur'),
-          onChange: action('onChange'),
-          value: 'Title Input'
-        } as WrappedFieldInputProps
-      }
-      meta={{ touched: true, error: 'Some error message' } as WrappedFieldMetaProps}
-      placeholder="(empty)"
-      getTextarea={action('getTexarea')}
-      onSubmit={action('onSubmit')}
-    />
-    <TitleInput
-      bold
-      icon={null}
-      input={
-        {
-          onBlur: action('onBlur'),
-          onChange: action('onChange'),
-          value: 'Title Input'
-        } as WrappedFieldInputProps
-      }
-      meta={{ touched: true, error: 'Some error message' } as WrappedFieldMetaProps}
-      placeholder="(empty)"
-      getTextarea={action('getTexarea')}
-      onSubmit={action('onSubmit')}
-    />
-  </div>
-));
+        {React.createElement(
+          MyForm({
+            icon: null,
+            placeholder: '(empty)',
+            validate: [required(), length({ min: 3, max: 255 })],
+            warning: [length({ min: 7 })]
+          })
+        )}
+
+        <div style={{ width: 300, borderBottom: '1px solid black', marginTop: 20 }} />
+
+        {React.createElement(
+          MyForm({
+            bold: true,
+            icon: null,
+            placeholder: '(empty)',
+            validate: [required(), length({ min: 3, max: 255 })],
+            warning: [length({ min: 7 })]
+          })
+        )}
+      </div>
+    );
+  });

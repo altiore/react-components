@@ -97,11 +97,14 @@ var TitleInput = /** @class */ (function (_super) {
         });
     };
     TitleInput.prototype.restorePreviousValue = function () {
-        this.updateInputState();
+        this.titleInputRef.blur();
+        this.autoHeightTextarea();
+        if (this.props.input.value !== this.state.previousValue) {
+            this.props.input.onChange(this.state.previousValue);
+        }
     };
     TitleInput.prototype.updateInputState = function (callback) {
         this.titleInputRef.blur();
-        this.autoHeightTextarea();
         if (this.props.input.value !== this.state.previousValue) {
             this.setState({
                 previousValue: this.props.input.value
