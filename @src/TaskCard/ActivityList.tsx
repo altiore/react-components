@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FaList } from 'react-icons/lib/fa';
+import { FaList } from 'react-icons/fa';
 import { ActivityItem } from '../ActivityItem';
 
 interface IActivityListProps {
@@ -52,7 +52,11 @@ class ActivityList extends React.Component<IActivityListProps, IState> {
         </div>
         {isVisible &&
           (list && list.length > 0 ? (
-            <div styleName="list">{list.map((item: any, i: number) => <ActivityItem key={i} {...item} />)}</div>
+            <div styleName="list">
+              {list.map((item: any, i: number) => (
+                <ActivityItem key={i} {...item} />
+              ))}
+            </div>
           ) : (
             <div styleName="no-activity">Активности нет</div>
           ))}

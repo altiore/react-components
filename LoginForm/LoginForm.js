@@ -14,9 +14,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
+var fa_1 = require("react-icons/fa");
 var redux_form_1 = require("redux-form");
-var FaLock = require('react-icons/lib/fa/lock');
-var FaUser = require('react-icons/lib/fa/user');
 var Button_1 = require("../Button");
 var Input_1 = require("../Input");
 var LoginForm = /** @class */ (function (_super) {
@@ -29,8 +28,8 @@ var LoginForm = /** @class */ (function (_super) {
         return (React.createElement("div", { styleName: "wrapper" },
             React.createElement("form", { styleName: "form", onSubmit: handleSubmit },
                 title && React.createElement("h3", { styleName: "title" }, title),
-                React.createElement(redux_form_1.Field, { name: "email", component: Input_1.Input, type: "email", icon: React.createElement(FaUser, null) }),
-                React.createElement(redux_form_1.Field, { name: "password", component: Input_1.Input, type: "password", icon: React.createElement(FaLock, null) }),
+                React.createElement(redux_form_1.Field, { name: "email", component: Input_1.Input, type: "email", icon: React.createElement(fa_1.FaUser, null) }),
+                React.createElement(redux_form_1.Field, { name: "password", component: Input_1.Input, type: "password", icon: React.createElement(fa_1.FaLock, null) }),
                 React.createElement(Button_1.Button, { type: "submit", stretch: true, primary: true, disabled: pristine || submitting, isLoading: submitting },
                     React.createElement("span", null, buttonText)))));
     };

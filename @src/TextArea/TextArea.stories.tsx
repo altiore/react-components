@@ -1,8 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import FaAlignJustify = require('react-icons/lib/fa/align-justify');
-import FaThumbtack = require('react-icons/lib/fa/thumb-tack');
+import { FaAlignJustify, FaThumbtack } from 'react-icons/fa';
 import { WrappedFieldInputProps, WrappedFieldMetaProps } from 'redux-form/lib/Field';
 import { TextArea } from './index';
 

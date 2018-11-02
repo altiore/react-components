@@ -25,7 +25,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var fa_1 = require("react-icons/lib/fa");
+var fa_1 = require("react-icons/fa");
 var ActivityItem_1 = require("../ActivityItem");
 var ActivityList = /** @class */ (function (_super) {
     __extends(ActivityList, _super);

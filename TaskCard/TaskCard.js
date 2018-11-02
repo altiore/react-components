@@ -14,8 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var FaClose = require('react-icons/lib/fa/close');
-var FaAlignJustify = require('react-icons/lib/fa/align-justify');
+var fa_1 = require("react-icons/fa");
 var addon_actions_1 = require("@storybook/addon-actions");
 var TitleInput_1 = require("../TitleInput");
 var index_1 = require("./index");
@@ -46,12 +45,12 @@ var TaskCard = /** @class */ (function (_super) {
                                 value: title
                             }, meta: {}, placeholder: "(empty)" })),
                     React.createElement("a", { href: "#", styleName: "button-close", onClick: this.handleCloseClick },
-                        React.createElement(FaClose, null)),
+                        React.createElement(fa_1.FaTimes, null)),
                     React.createElement("div", { styleName: "task-details-container" },
                         React.createElement("div", { styleName: "task-details" },
                             React.createElement("div", { styleName: "container" },
                                 React.createElement("h3", null,
-                                    React.createElement(FaAlignJustify, null),
+                                    React.createElement(fa_1.FaAlignJustify, null),
                                     " \u0414\u0435\u0442\u0430\u043B\u0438"),
                                 React.createElement("div", { styleName: "details-container" })),
                             React.createElement("div", { styleName: "container" },

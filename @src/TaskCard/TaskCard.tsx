@@ -1,7 +1,5 @@
 import * as React from 'react';
-
-const FaClose = require('react-icons/lib/fa/close');
-const FaAlignJustify = require('react-icons/lib/fa/align-justify');
+import { FaAlignJustify, FaTimes as FaClose } from 'react-icons/fa';
 
 import { action } from '@storybook/addon-actions';
 import { WrappedFieldInputProps, WrappedFieldMetaProps } from 'redux-form';
@@ -74,7 +72,11 @@ export class TaskCard extends React.Component<ITaskCardProps, any> {
                 {/*demo data*/}
                 <div styleName="action-block">
                   <h3>Действия</h3>
-                  <ul styleName="actions">{actions.map((a, i) => <li key={i}>{a}</li>)}</ul>
+                  <ul styleName="actions">
+                    {actions.map((a, i) => (
+                      <li key={i}>{a}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>

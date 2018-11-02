@@ -27,7 +27,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var cn = require("classnames");
 var React = require("react");
 var ts_keycode_enum_1 = require("ts-keycode-enum");
-var FaFileText = require('react-icons/lib/fa/file-text');
+var fa_1 = require("react-icons/fa");
 var TEXT_HEIGHT = 34;
 var ERROR_HEIGHT = 12;
 var TitleInput = /** @class */ (function (_super) {
@@ -149,7 +149,7 @@ var TitleInput = /** @class */ (function (_super) {
                                 _d)) }, warning)))))));
     };
     TitleInput.defaultProps = {
-        icon: React.createElement(FaFileText, null),
+        icon: React.createElement(fa_1.FaFile, null),
         maxLength: 500
     };
     return TitleInput;

@@ -1,11 +1,10 @@
 import { storiesOf } from '@storybook/react';
-import * as React from 'react'
-import { WrappedFieldInputProps, WrappedFieldMetaProps } from 'redux-form/lib/Field'
-const FaLock = require('react-icons/lib/fa/lock');
-const FaUser = require('react-icons/lib/fa/user');
+import * as React from 'react';
+import { FaLock, FaUser } from 'react-icons/fa';
+import { WrappedFieldInputProps, WrappedFieldMetaProps } from 'redux-form/lib/Field';
 
-import { action } from '@storybook/addon-actions'
-import { Input } from './index'
+import { action } from '@storybook/addon-actions';
+import { Input } from './index';
 
 storiesOf('Atoms/Input', module).add('default', () => (
   <form style={{ width: 300 }}>
@@ -27,7 +26,7 @@ storiesOf('Atoms/Input', module).add('default', () => (
       placeholder={'Placeholder'}
     />
     <Input
-      type='password'
+      type="password"
       input={{ name: 'input3', onChange: action('changed') } as WrappedFieldInputProps}
       meta={{} as WrappedFieldMetaProps}
       showLabel={true}
@@ -35,4 +34,4 @@ storiesOf('Atoms/Input', module).add('default', () => (
       icon={<FaLock />}
     />
   </form>
-))
+));

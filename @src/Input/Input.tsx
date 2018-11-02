@@ -1,6 +1,6 @@
 import * as cn from 'classnames';
 import * as React from 'react';
-import { IconBaseProps } from 'react-icon-base';
+import { IconBaseProps } from 'react-icons';
 import { WrappedFieldProps } from 'redux-form/lib/Field';
 
 export interface InputProps extends WrappedFieldProps {

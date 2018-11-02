@@ -3,7 +3,7 @@ import * as React from 'react';
 import { WrappedFieldInputProps, WrappedFieldMetaProps, WrappedFieldProps } from 'redux-form/lib/Field';
 import { Key } from 'ts-keycode-enum';
 
-const FaFileText = require('react-icons/lib/fa/file-text');
+import { FaFile as FaFileText } from 'react-icons/fa';
 
 interface ITitleInputProps extends WrappedFieldProps {
   bold?: boolean;

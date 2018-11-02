@@ -1,15 +1,13 @@
 import * as React from 'react';
+import { FaLock, FaUser } from 'react-icons/fa';
 import { Field, InjectedFormProps } from 'redux-form';
 
-const FaLock = require('react-icons/lib/fa/lock');
-const FaUser = require('react-icons/lib/fa/user');
-
-import { Button } from '../Button'
-import { Input } from '../Input'
+import { Button } from '../Button';
+import { Input } from '../Input';
 
 export interface ILoginFormProps {
-  title?: string,
-  buttonText?: string,
+  title?: string;
+  buttonText?: string;
 }
 
 export class LoginForm extends React.Component<ILoginFormProps & InjectedFormProps<{}, ILoginFormProps>, object> {
@@ -19,18 +17,8 @@ export class LoginForm extends React.Component<ILoginFormProps & InjectedFormPro
       <div styleName="wrapper">
         <form styleName="form" onSubmit={handleSubmit}>
           {title && <h3 styleName="title">{title}</h3>}
-          <Field
-            name="email"
-            component={Input as any}
-            type="email"
-            icon={<FaUser />}
-          />
-          <Field
-            name="password"
-            component={Input as any}
-            type="password"
-            icon={<FaLock />}
-          />
+          <Field name="email" component={Input as any} type="email" icon={<FaUser />} />
+          <Field name="password" component={Input as any} type="password" icon={<FaLock />} />
           <Button type="submit" stretch primary disabled={pristine || submitting} isLoading={submitting}>
             <span>{buttonText}</span>
           </Button>
@@ -39,4 +27,3 @@ export class LoginForm extends React.Component<ILoginFormProps & InjectedFormPro
     );
   }
 }
-
