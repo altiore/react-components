@@ -21,8 +21,6 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true
   },
-  "include": [
-    "@src/**/*"
-  ],
-  "exclude": ["node_modules", "build", "scripts", ".out"]
+  "include": ["@src/**/*"],
+  "exclude": ["node_modules", "build", "@scripts", ".out"]
 }
