@@ -3,8 +3,6 @@ import * as React from 'react';
 import { WrappedFieldInputProps, WrappedFieldMetaProps, WrappedFieldProps } from 'redux-form/lib/Field';
 import { Key } from 'ts-keycode-enum';
 
-import { FaFile as FaFileText } from 'react-icons/fa';
-
 interface ITitleInputProps extends WrappedFieldProps {
   bold?: boolean;
   className?: string;
@@ -12,7 +10,7 @@ interface ITitleInputProps extends WrappedFieldProps {
   input: WrappedFieldInputProps;
   meta: WrappedFieldMetaProps;
   label?: string;
-  icon?: any;
+  icon?: React.ReactNode;
   maxLength?: number;
   placeholder?: string;
   onSubmit?: () => void;
@@ -30,7 +28,7 @@ const ERROR_HEIGHT = 12;
 
 class TitleInput extends React.Component<ITitleInputProps, IState> {
   public static defaultProps: Partial<ITitleInputProps> = {
-    icon: <FaFileText />,
+    icon: undefined,
     maxLength: 500
   };
 
@@ -176,7 +174,7 @@ class TitleInput extends React.Component<ITitleInputProps, IState> {
             className={cn(styles.textarea, {
               [`${classNameInput}`]: !!classNameInput,
               [styles.bold]: bold,
-              [styles['with-icon']]: icon
+              [styles['with-icon']]: !!icon
             })}
             {...input}
             maxLength={maxLength}
@@ -192,7 +190,7 @@ class TitleInput extends React.Component<ITitleInputProps, IState> {
             ((error && (
               <span
                 className={cn(styles.error, {
-                  [styles['with-icon']]: icon
+                  [styles['with-icon']]: !!icon
                 })}
               >
                 {error}
@@ -201,7 +199,7 @@ class TitleInput extends React.Component<ITitleInputProps, IState> {
               (warning && (
                 <span
                   className={cn(styles.warning, {
-                    [styles['with-icon']]: icon
+                    [styles['with-icon']]: !!icon
                   })}
                 >
                   {warning}

@@ -1,6 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
+import { FaFile } from 'react-icons/fa';
 import { Field, reduxForm } from 'redux-form';
 import { length, required } from 'redux-form-validators';
 
@@ -26,6 +27,7 @@ storiesOf('Atoms/TitleInput', module)
       <div style={{ width: 600 }}>
         {React.createElement(
           MyForm({
+            icon: <FaFile />,
             label: 'Input label',
             placeholder: '(empty)',
             validate: [required(), length({ min: 3, max: 255 })],
@@ -37,6 +39,7 @@ storiesOf('Atoms/TitleInput', module)
 
         {React.createElement(
           MyForm({
+            icon: <FaFile />,
             label: 'Input label',
             placeholder: '(empty)',
             validate: [required(), length({ min: 3, max: 255 })],
@@ -48,6 +51,7 @@ storiesOf('Atoms/TitleInput', module)
 
         {React.createElement(
           MyForm({
+            icon: <FaFile />,
             placeholder: '(empty)',
             validate: [required(), length({ min: 3, max: 255 })],
             warning: [length({ min: 7 })]
@@ -58,7 +62,6 @@ storiesOf('Atoms/TitleInput', module)
 
         {React.createElement(
           MyForm({
-            icon: null,
             placeholder: '(empty)',
             validate: [required(), length({ min: 3, max: 255 })],
             warning: [length({ min: 7 })]
@@ -69,7 +72,6 @@ storiesOf('Atoms/TitleInput', module)
 
         {React.createElement(
           MyForm({
-            icon: null,
             placeholder: '(empty)',
             validate: [required(), length({ min: 3, max: 255 })],
             warning: [length({ min: 7 })]
@@ -81,7 +83,6 @@ storiesOf('Atoms/TitleInput', module)
         {React.createElement(
           MyForm({
             bold: true,
-            icon: null,
             placeholder: '(empty)',
             validate: [required(), length({ min: 3, max: 255 })],
             warning: [length({ min: 7 })]

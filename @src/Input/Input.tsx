@@ -1,10 +1,9 @@
 import * as cn from 'classnames';
 import * as React from 'react';
-import { IconBaseProps } from 'react-icons';
 import { WrappedFieldProps } from 'redux-form/lib/Field';
 
-export interface InputProps extends WrappedFieldProps {
-  icon?: React.ReactElement<IconBaseProps>;
+export interface InputProps<IconProps = any> extends WrappedFieldProps {
+  icon?: React.ReactElement<IconProps>;
   inputClass?: string;
   showLabel?: boolean;
   type?: string;

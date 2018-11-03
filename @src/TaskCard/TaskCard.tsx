@@ -1,6 +1,8 @@
 import * as React from 'react';
+// TODO: must be removed from here!
 import { FaAlignJustify, FaTimes as FaClose } from 'react-icons/fa';
 
+// TODO: must be removed from here!
 import { action } from '@storybook/addon-actions';
 import { WrappedFieldInputProps, WrappedFieldMetaProps } from 'redux-form';
 import { TitleInput } from '../TitleInput';

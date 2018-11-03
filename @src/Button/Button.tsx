@@ -1,9 +1,6 @@
 import * as cn from 'classnames';
 import * as React from 'react';
 
-// import Ink from '../Ink'
-// import Loading from '../Icons/Loading';
-
 export interface IProps {
   children: string | JSX.Element;
   className?: string;
@@ -13,23 +10,23 @@ export interface IProps {
   isLoading?: boolean;
   little?: boolean;
   lg?: boolean;
-  onClick?: (e: React.MouseEvent) => void,
+  onClick?: (e: React.MouseEvent) => void;
   primary?: boolean;
   secondary?: boolean;
   sm?: boolean;
   stretch?: boolean;
   styles?: {
-    button: string,
-    danger: string,
-    float: string,
-    little: string,
-    lg: string,
-    primary: string,
-    secondary: string,
-    sm: string,
-    stretch: string,
-    text: string,
-    xs: string,
+    button: string;
+    danger: string;
+    float: string;
+    little: string;
+    lg: string;
+    primary: string;
+    secondary: string;
+    sm: string;
+    stretch: string;
+    text: string;
+    xs: string;
   };
   xs?: boolean;
 }
@@ -51,7 +48,7 @@ export class Button extends React.PureComponent<IProps & React.ButtonHTMLAttribu
       secondary,
       stretch,
       styles,
-      xs,
+      xs
     } = this.props;
     if (!styles) {
       return null;
@@ -69,13 +66,13 @@ export class Button extends React.PureComponent<IProps & React.ButtonHTMLAttribu
           [styles.primary]: primary,
           [styles.secondary]: secondary,
           [styles.float]: float,
-          [styles.stretch]: stretch,
+          [styles.stretch]: stretch
         })}
       >
         {isLoading ? (
           <span>loading...</span>
-          /* <Loading color={this.getColor()} /> */
         ) : (
+          /* <Loading color={this.getColor()} /> */
           <React.Fragment>
             {/*{!disabled && <Ink />}*/}
             <span className={styles.text}>{children}</span>
@@ -83,5 +80,5 @@ export class Button extends React.PureComponent<IProps & React.ButtonHTMLAttribu
         )}
       </button>
     );
-  };
-};
+  }
+}

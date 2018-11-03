@@ -1,10 +1,9 @@
 import * as cn from 'classnames';
 import * as React from 'react';
-import { IconBaseProps } from 'react-icons';
 import { WrappedFieldProps } from 'redux-form';
 
-interface ITextAreaProps extends React.InputHTMLAttributes<any>, WrappedFieldProps {
-  icon?: React.ReactElement<IconBaseProps>;
+interface ITextAreaProps<IconProps = any> extends React.InputHTMLAttributes<any>, WrappedFieldProps {
+  icon?: React.ReactElement<IconProps>;
   title?: string;
   value?: string;
   placeholder?: string;

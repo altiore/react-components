@@ -1,10 +1,9 @@
-import * as moment from 'moment';
 import * as React from 'react';
 
 interface IActivityItemProps {
   delimiter?: boolean;
   description: string;
-  time: Date;
+  time: string;
   userName: string;
   userPic: string;
 }
@@ -26,11 +25,7 @@ export class ActivityItem extends React.PureComponent<IActivityItemProps, any> {
           <div styleName="description">
             <b>{userName}</b> {description}
           </div>
-          <div styleName="time" title={moment(time).format()}>
-            {moment(time)
-              .startOf('second')
-              .fromNow()}
-          </div>
+          <div styleName="time">{time}</div>
         </div>
         {delimiter && <hr />}
       </React.Fragment>
