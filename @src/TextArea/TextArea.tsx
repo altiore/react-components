@@ -5,7 +5,6 @@ import { WrappedFieldProps } from 'redux-form';
 interface ITextAreaProps<IconProps = any> extends React.InputHTMLAttributes<any>, WrappedFieldProps {
   icon?: React.ReactElement<IconProps>;
   title?: string;
-  value?: string;
   placeholder?: string;
   className?: string;
   editorClass?: string;
@@ -73,7 +72,6 @@ class TextArea extends React.Component<ITextAreaProps, ITextAreaState> {
       icon,
       title,
       input,
-      value,
       placeholder,
       className,
       wrapperClass,
@@ -105,11 +103,11 @@ class TextArea extends React.Component<ITextAreaProps, ITextAreaState> {
             {...input}
             className={cn(styles.editor, editorClass, {
               [styles.active]: edit,
-              [styles.inactive]: !edit && !value,
+              [styles.inactive]: !edit && !input.value,
               [styles.editorError]: touched && !!error,
               [styles.editorWarning]: touched && !!warning
             })}
-            defaultValue={value || placeholder}
+            placeholder={placeholder}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
           />
