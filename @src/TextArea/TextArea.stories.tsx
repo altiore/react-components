@@ -2,10 +2,11 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { FaAlignJustify, FaThumbtack } from 'react-icons/fa';
-import { WrappedFieldInputProps, WrappedFieldMetaProps } from 'redux-form/lib/Field';
+import { Field, InjectedFormProps, reduxForm, WrappedFieldMetaProps } from 'redux-form';
+import { FormDecorator } from '../../.storybook/decorators';
 import { TextArea } from './index';
 
-const block = {
+const group = {
   alignItems: 'center',
   display: 'flex',
   flexFlow: 'column nowrap',
@@ -15,85 +16,106 @@ const block = {
   margin: 20
 };
 
-storiesOf('Atoms/TextArea', module).add('default', () => (
-  <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'space-around', width: '98%' }}>
-    <div style={block}>
-      <TextArea
-        input={
-          {
-            name: 'description',
-            onBlur: action('blur'),
-            onChange: action('changed'),
-            onFocus: action('focus')
-          } as WrappedFieldInputProps
-        }
-        meta={{} as WrappedFieldMetaProps}
-        title={'Описание'}
-        placeholder={'Введи ваше описание'}
-        icon={<FaAlignJustify />}
-      />
+const screen = {
+  display: 'flex',
+  flexFlow: 'row wrap',
+  justifyContent: 'space-around',
+  width: '98%'
+};
 
-      <TextArea
-        input={{ name: 'task', onChange: action('changed') } as WrappedFieldInputProps}
-        meta={{} as WrappedFieldMetaProps}
-        title={'Задача'}
-        value={'Сделать простую текстарею'}
-        placeholder={'Введите вашу прекраснужю задачу'}
-        icon={<FaThumbtack />}
-      />
+interface ITextAreaScreenData {
+  task: string;
+}
 
-      <TextArea
-        input={{ name: 'empty', onChange: action('changed') } as WrappedFieldInputProps}
-        meta={{} as WrappedFieldMetaProps}
-      />
-    </div>
+const TextAreaScreenJsx: React.SFC<InjectedFormProps<ITextAreaScreenData>> = ({ children, handleSubmit }) => (
+  <form onSubmit={handleSubmit} style={screen}>
+    {children}
+  </form>
+);
 
-    <div style={block}>
-      <TextArea
-        input={{ name: 'description', onChange: action('changed') } as WrappedFieldInputProps}
-        meta={{ touched: true, error: 'Внимание ошибочка' } as WrappedFieldMetaProps}
-        title={'Описание'}
-        placeholder={'Введи ваше описание'}
-        icon={<FaAlignJustify />}
-      />
+const TextAreaScreen = reduxForm<ITextAreaScreenData>({
+  form: 'TextAreaScreen',
+  initialValues: {
+    task: 'Сделать простую текстарею'
+  },
+  onChange: action('changed')
+})(TextAreaScreenJsx);
 
-      <TextArea
-        input={{ name: 'task', onChange: action('changed') } as WrappedFieldInputProps}
-        meta={{ touched: true, error: 'Внимание ошибочка' } as WrappedFieldMetaProps}
-        title={'Задача'}
-        value={'Сделать простую текстарею'}
-        placeholder={'Введите вашу прекраснужю задачу'}
-        icon={<FaThumbtack />}
-      />
+const TextAreaGroup: React.SFC<{}> = ({ children }) => <div style={group}>{children}</div>;
 
-      <TextArea
-        input={{ name: 'empty', onChange: action('changed') } as WrappedFieldInputProps}
-        meta={{ touched: true, error: 'Внимание ошибочка' } as WrappedFieldMetaProps}
-      />
-    </div>
+const MyTextArea: React.SFC<any> = ({ name, ...rest }) => (
+  <Field name={name || 'empty'} component={TextArea} {...rest} />
+);
 
-    <div style={block}>
-      <TextArea
-        input={{ name: 'description', onChange: action('changed') } as WrappedFieldInputProps}
-        meta={{ touched: true, warning: 'Предупреждение' } as WrappedFieldMetaProps}
-        title={'Описание'}
-        placeholder={'Введи ваше описание'}
-        icon={<FaAlignJustify />}
-      />
+storiesOf('Atoms/TextArea', module)
+  .addDecorator(FormDecorator)
+  .add('default', () => (
+    <TextAreaScreen>
+      <TextAreaGroup>
+        <MyTextArea
+          name={'description'}
+          placeholder={'Введи ваше описание'}
+          title={'Описание'}
+          icon={<FaAlignJustify />}
+        />
 
-      <TextArea
-        input={{ name: 'task', onChange: action('changed') } as WrappedFieldInputProps}
-        meta={{ touched: true, warning: 'Предупреждение' } as WrappedFieldMetaProps}
-        title={'Задача'}
-        value={'Сделать простую текстарею'}
-        placeholder={'Введите вашу прекраснужю задачу'}
-        icon={<FaThumbtack />}
-      />
+        <MyTextArea
+          name={'task'}
+          placeholder={'Введите вашу прекрасную задачу'}
+          title={'Задача'}
+          icon={<FaThumbtack />}
+        />
 
-      <TextArea
-        input={{ name: 'empty', onChange: action('changed') } as WrappedFieldInputProps}
-        meta={{ touched: true, warning: 'Предупреждение' } as WrappedFieldMetaProps}
-      />
-    </div>
-  </div>
-));
+        <MyTextArea icon={<FaThumbtack />} />
+      </TextAreaGroup>
+    </TextAreaScreen>
+  ))
+  .add('warning', () => (
+    <TextAreaScreen>
+      <TextAreaGroup>
+        <MyTextArea
+          name={'description'}
+          placeholder={'Введи ваше описание'}
+          title={'Описание'}
+          meta={{ touched: true, warning: 'Предупреждение' } as WrappedFieldMetaProps}
+          icon={<FaAlignJustify />}
+        />
+
+        <MyTextArea
+          name={'task'}
+          placeholder={'Введите вашу прекрасную задачу'}
+          title={'Задача'}
+          meta={{ touched: true, warning: 'Предупреждение' } as WrappedFieldMetaProps}
+          icon={<FaThumbtack />}
+        />
+
+        <MyTextArea
+          meta={{ touched: true, warning: 'Предупреждение' } as WrappedFieldMetaProps}
+          icon={<FaThumbtack />}
+        />
+      </TextAreaGroup>
+    </TextAreaScreen>
+  ))
+  .add('danger', () => (
+    <TextAreaScreen>
+      <TextAreaGroup>
+        <MyTextArea
+          name={'description'}
+          placeholder={'Введи ваше описание'}
+          title={'Описание'}
+          meta={{ touched: true, error: 'Ошибочка' } as WrappedFieldMetaProps}
+          icon={<FaAlignJustify />}
+        />
+
+        <MyTextArea
+          name={'task'}
+          placeholder={'Введите вашу прекрасную задачу'}
+          title={'Задача'}
+          meta={{ touched: true, error: 'Ошибочка' } as WrappedFieldMetaProps}
+          icon={<FaThumbtack />}
+        />
+
+        <MyTextArea meta={{ touched: true, error: 'Ошибочка' } as WrappedFieldMetaProps} icon={<FaThumbtack />} />
+      </TextAreaGroup>
+    </TextAreaScreen>
+  ));
