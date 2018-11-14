@@ -36,6 +36,7 @@
     "classnames": "2.2.6",
     "copyfiles": "2.0.0",
     "css-loader": "0.28.11",
+    "faker": "^4.1.0",
     "fork-ts-checker-webpack-plugin": "0.4.2",
     "husky": "1.1.2",
     "jest": "23.1.0",
