@@ -8,6 +8,15 @@
 /build
 /dist
 
+# dev
+/@scripts
+/@src
+.circleci
+.storybook
+tslint.json
+tsconfig.json
+tsconfig.prod.json
+
 # misc
 .DS_Store
 .env.local
