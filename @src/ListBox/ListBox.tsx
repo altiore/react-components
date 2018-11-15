@@ -136,17 +136,17 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
     switch (e.keyCode) {
       case Key.DownArrow:
         e.preventDefault();
-        this.highlightItem(this.getNextItem());
+        this.highlightItem(this.getNextItem())();
         break;
 
       case Key.UpArrow:
         e.preventDefault();
-        this.highlightItem(this.getPreviousItem());
+        this.highlightItem(this.getPreviousItem())();
         break;
 
       case Key.Enter:
         e.preventDefault();
-        this.selectItem(this.state.highlightedItem);
+        this.selectItem(this.state.highlightedItem)();
         break;
 
       case Key.Escape:
