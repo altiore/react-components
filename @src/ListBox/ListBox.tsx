@@ -82,12 +82,12 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
     const selectedItemIndex = selectedItems.indexOf(item);
     if (selectedItemIndex === -1) {
       if (isMulti) {
-        selectedItems.push(item);
+        selectedItems = [...selectedItems, item];
       } else {
         selectedItems = [item];
       }
     } else {
-      selectedItems.splice(selectedItemIndex, 1);
+      selectedItems = [...selectedItems.slice(0, selectedItemIndex), ...selectedItems.slice(selectedItemIndex + 1)];
     }
 
     this.filterInputRef.current.focus();
