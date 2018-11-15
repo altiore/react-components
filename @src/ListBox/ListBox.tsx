@@ -5,6 +5,7 @@ import { Key } from 'ts-keycode-enum';
 export interface IListBoxProps extends WrappedFieldProps {
   items: object[];
   filterItem: (filterKw: string, item: any) => boolean;
+  compareItem?: (item: any, currentValue: any) => boolean;
   showFilter?: boolean;
   label?: React.ReactNode;
   emptyLabel?: React.ReactNode;
@@ -71,10 +72,11 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
     );
   }
 
-  public selectItem = (item: any) => {
+  public selectItem = (item: any) => () => {
     const {
       isMulti,
-      input: { value }
+      input: { value },
+      compareItem
     } = this.props;
     let selectedItems = value ? [...value] : [];
 
@@ -94,7 +96,7 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
     this.props.input.onChange(selectedItems);
   };
 
-  public highlightItem = (item: any) => {
+  public highlightItem = (item: any) => () => {
     this.setState(
       {
         highlightedItem: item
@@ -179,12 +181,13 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
   public getItemClass(item: any): string {
     const { highlightedItem } = this.state;
     const {
+      compareItem,
       input: { value }
     } = this.props;
 
     let itemClass: string = 'item';
 
-    if ((value || []).indexOf(item) !== -1) {
+    if (compareItem ? compareItem(item, value) : (value || []).indexOf(item) !== -1) {
       itemClass += '-selected';
     }
 
@@ -240,8 +243,8 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
                 return (
                   <div
                     key={i}
-                    onClick={this.selectItem.bind(this, item)}
-                    onMouseEnter={this.highlightItem.bind(this, item)}
+                    onClick={this.selectItem(item)}
+                    onMouseEnter={this.highlightItem(item)}
                     ref={itemRef}
                     styleName={this.getItemClass(item)}
                   >

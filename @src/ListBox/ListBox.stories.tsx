@@ -20,8 +20,8 @@ const members: object[] = [];
 for (let i = 1; i <= 50; i++) {
   members.push({
     icon: <img styleName="pic" src={faker.image.avatar()} />,
-    label: faker.name.findName(),
-    value: `member${i}`
+    id: `member${i}`,
+    label: faker.name.findName()
   });
 }
 
