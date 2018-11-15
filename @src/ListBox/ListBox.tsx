@@ -56,6 +56,7 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
   }
 
   public onCloseClick(e: React.MouseEvent<HTMLElement>) {
+    e.stopPropagation();
     if (this.props.onClose) {
       this.props.onClose();
     }
