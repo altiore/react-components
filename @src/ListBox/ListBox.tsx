@@ -5,7 +5,7 @@ import { Key } from 'ts-keycode-enum';
 export interface IListBoxProps extends WrappedFieldProps {
   items: object[];
   filterItem: (filterKw: string, item: any) => boolean;
-  compareItem?: (item: any, currentValue: any) => boolean;
+  findItemIndex?: (item: any, currentValue: any) => number;
   showFilter?: boolean;
   label?: React.ReactNode;
   emptyLabel?: React.ReactNode;
@@ -75,11 +75,12 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
   public selectItem = (item: any) => () => {
     const {
       isMulti,
-      input: { value }
+      input: { value },
+      findItemIndex
     } = this.props;
     let selectedItems = value ? [...value] : [];
 
-    const selectedItemIndex = selectedItems.findIndex(el => el === item);
+    const selectedItemIndex = findItemIndex ? findItemIndex(item, selectedItems) : selectedItems.indexOf(item);
     if (selectedItemIndex === -1) {
       if (isMulti) {
         selectedItems = [...selectedItems, item];
@@ -180,13 +181,13 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
   public getItemClass(item: any): string {
     const { highlightedItem } = this.state;
     const {
-      compareItem,
+      findItemIndex,
       input: { value }
     } = this.props;
 
     let itemClass: string = 'item';
 
-    if (compareItem ? compareItem(item, value) : (value || []).indexOf(item) !== -1) {
+    if (findItemIndex ? findItemIndex(item, value) !== -1 : (value || []).indexOf(item) !== -1) {
       itemClass += '-selected';
     }
 
