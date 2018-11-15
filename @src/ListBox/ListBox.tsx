@@ -27,25 +27,15 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
     showFilter: false
   };
 
-  public filterInputRef: any;
-  public setFilterInputRef: (el: any) => void;
-
-  public highlightedInputRef: any;
-
-  public itemsWrapperRef: any;
+  public filterInputRef: React.RefObject<any>;
+  public highlightedInputRef: React.RefObject<any>;
+  public itemsWrapperRef: React.RefObject<any>;
 
   public constructor(props: any) {
     super(props);
 
-    this.setFilterInputRef = element => {
-      this.filterInputRef = element;
-      if (this.filterInputRef) {
-        this.filterInputRef.focus();
-      }
-    };
-
+    this.filterInputRef = React.createRef();
     this.itemsWrapperRef = React.createRef();
-
     this.highlightedInputRef = React.createRef();
 
     this.onCloseClick = this.onCloseClick.bind(this);
@@ -57,8 +47,11 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
       filterKw: '',
       highlightedItem: props.items[0]
     };
+  }
 
+  public componentDidMount() {
     this.filterItems('');
+    this.filterInputRef.current.focus();
   }
 
   public onCloseClick(e: React.MouseEvent<HTMLElement>) {
@@ -96,7 +89,7 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
       selectedItems.splice(selectedItemIndex, 1);
     }
 
-    this.filterInputRef.focus();
+    this.filterInputRef.current.focus();
 
     this.props.input.onChange(selectedItems);
   };
@@ -234,7 +227,7 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
               value={filterKw}
               onChange={this.onFilterChange}
               onKeyDown={this.onFilterKeyDown}
-              ref={this.setFilterInputRef}
+              ref={this.filterInputRef}
             />
           </div>
         )}
@@ -242,7 +235,7 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
         <div styleName="list" ref={this.itemsWrapperRef}>
           {displayedItems && displayedItems.length > 0
             ? displayedItems.map((item: any, i: number) => {
-                const itemRef = item === this.state.highlightedItem ? this.highlightedInputRef : null;
+                const itemRef = item === this.state.highlightedItem ? this.highlightedInputRef : undefined;
 
                 return (
                   <div
