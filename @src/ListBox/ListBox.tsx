@@ -73,7 +73,10 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
     );
   }
 
-  public selectItem = (item: any) => () => {
+  public selectItem = (item: any) => (e?: React.MouseEvent<HTMLElement>) => {
+    if (e) {
+      e.stopPropagation();
+    }
     const {
       isMulti,
       input: { value },
@@ -138,21 +141,25 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
     switch (e.keyCode) {
       case Key.DownArrow:
         e.preventDefault();
+        e.stopPropagation();
         this.highlightItem(this.getNextItem())();
         break;
 
       case Key.UpArrow:
         e.preventDefault();
+        e.stopPropagation();
         this.highlightItem(this.getPreviousItem())();
         break;
 
       case Key.Enter:
         e.preventDefault();
+        e.stopPropagation();
         this.selectItem(this.state.highlightedItem)();
         break;
 
       case Key.Escape:
         e.preventDefault();
+        e.stopPropagation();
         if (this.state.filterKw === '') {
           if (this.props.onClose) {
             this.props.onClose();
