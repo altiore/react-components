@@ -67,10 +67,8 @@ storiesOf('Atoms/ListBox', module)
           ProjectForm({
             filterItem,
             getItemLabel: getLabel,
-            input: { onChange: action('onChange') },
             items: projects,
             label: 'Проект',
-            onChange: action('onChange'),
             onClose: action('onClose'),
             showFilter: true
           })
@@ -82,11 +80,9 @@ storiesOf('Atoms/ListBox', module)
           MembersForm({
             filterItem,
             getItemLabel: getLabel,
-            input: { value: [members[0], members[1], members[2]], onChange: action('onChange') },
             isMulti: true,
             items: members,
             label: 'Пользователи',
-            onChange: action('onChange'),
             onClose: action('onClose'),
             showFilter: true
           })

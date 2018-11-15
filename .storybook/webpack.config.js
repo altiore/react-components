@@ -116,12 +116,12 @@ module.exports = (baseConfig, env, config) => {
     ],
   });
   config.plugins.push(new TSDocgenPlugin()); // optional
-  config.plugins.push(new ForkTsCheckerWebpackPlugin({
-    async: false,
-    watch: paths.appSrc,
-    tsconfig: paths.appTsConfig,
-    tslint: paths.appTsLint,
-  }));
+  // config.plugins.push(new ForkTsCheckerWebpackPlugin({
+  //   async: false,
+  //   watch: paths.appSrc,
+  //   tsconfig: paths.appTsConfig,
+  //   tslint: paths.appTsLint,
+  // }));
   config.resolve.extensions.push(".ts", ".tsx");
   return config;
 };

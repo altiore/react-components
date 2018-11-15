@@ -18,7 +18,6 @@ interface IState {
   displayedItems: any[];
   filterKw: string;
   highlightedItem: any;
-  selectedItems: any[];
 }
 
 export class ListBox extends React.Component<IListBoxProps, IState> {
@@ -56,8 +55,7 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
     this.state = {
       displayedItems: props.items,
       filterKw: '',
-      highlightedItem: props.items[0],
-      selectedItems: props.input.value
+      highlightedItem: props.items[0]
     };
 
     this.filterItems('');
@@ -81,8 +79,11 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
   }
 
   public selectItem = (item: any) => {
-    const { isMulti } = this.props;
-    let { selectedItems } = this.state;
+    const {
+      isMulti,
+      input: { value }
+    } = this.props;
+    let selectedItems = value ? [...value] : [];
 
     const selectedItemIndex = (selectedItems || []).indexOf(item);
     if (selectedItemIndex === -1) {
@@ -94,8 +95,6 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
     } else {
       selectedItems.splice(selectedItemIndex, 1);
     }
-
-    this.setState({ selectedItems });
 
     this.filterInputRef.focus();
 
@@ -185,11 +184,14 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
   }
 
   public getItemClass(item: any): string {
-    const { highlightedItem, selectedItems } = this.state;
+    const { highlightedItem } = this.state;
+    const {
+      input: { value }
+    } = this.props;
 
     let itemClass: string = 'item';
 
-    if ((selectedItems || []).indexOf(item) !== -1) {
+    if ((value || []).indexOf(item) !== -1) {
       itemClass += '-selected';
     }
 
