@@ -75,12 +75,11 @@ export class ListBox extends React.Component<IListBoxProps, IState> {
   public selectItem = (item: any) => () => {
     const {
       isMulti,
-      input: { value },
-      compareItem
+      input: { value }
     } = this.props;
     let selectedItems = value ? [...value] : [];
 
-    const selectedItemIndex = (selectedItems || []).indexOf(item);
+    const selectedItemIndex = selectedItems.indexOf(item);
     if (selectedItemIndex === -1) {
       if (isMulti) {
         selectedItems.push(item);
