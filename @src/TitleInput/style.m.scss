@@ -12,7 +12,7 @@ $warning: #ffc107 !default; // hover #E0A800 or #ff8484
 
 .input-wrapper {
   box-sizing: border-box;
-  display: block;
+  display: table;
   position: relative;
   width: 100%;
   &.bold {
@@ -27,6 +27,8 @@ $warning: #ffc107 !default; // hover #E0A800 or #ff8484
 }
 
 .textarea {
+  display: table-cell;
+  width: 100%;
   color: $mainColor;
   box-sizing: border-box;
   resize: none;
@@ -34,7 +36,7 @@ $warning: #ffc107 !default; // hover #E0A800 or #ff8484
   overflow-wrap: break-word;
   min-height: 32px;
   height: auto;
-  width: 100%;
+  //width: 100%;
   margin: 1px;
   padding: 4px;
   font-size: 18px;
@@ -61,14 +63,12 @@ $warning: #ffc107 !default; // hover #E0A800 or #ff8484
 }
 
 .icon {
-  position: absolute;
-  left: 0;
-  top: 0;
-  * {
-    position: absolute;
-    left: 0;
-    top: 10px;
-    max-width: 16px;
+  display: table-cell;
+  vertical-align: top;
+  .inner {
+    display: table-cell;
+    vertical-align: middle;
+    height: 40px;
   }
 }
 
