@@ -169,12 +169,15 @@ class TitleInput extends React.Component<ITitleInputProps, IState> {
           </label>
         )}
         <div styleName={'input-wrapper'} style={{ height: wrapperHeight }}>
-          {icon && <div styleName="icon">{icon}</div>}
+          {icon && (
+            <div styleName="icon">
+              <div styleName="inner">{icon}</div>
+            </div>
+          )}
           <textarea
             className={cn(styles.textarea, {
               [`${classNameInput}`]: !!classNameInput,
-              [styles.bold]: bold,
-              [styles['with-icon']]: !!icon
+              [styles.bold]: bold
             })}
             {...input}
             maxLength={maxLength}
