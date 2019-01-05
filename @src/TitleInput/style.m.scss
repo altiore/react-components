@@ -2,6 +2,7 @@ $mainColor: #000;
 $secondaryColor: #333;
 $danger: #dc3545 !default;
 $warning: #ffc107 !default; // hover #E0A800 or #ff8484
+$borderColor: #5ba4cf !default;
 
 .wrapper {
   box-sizing: border-box;
@@ -12,12 +13,11 @@ $warning: #ffc107 !default; // hover #E0A800 or #ff8484
 
 .input-wrapper {
   box-sizing: border-box;
-  display: block;
   position: relative;
   width: 100%;
-  &.bold {
-
-  }
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 
   label {
     color: $secondaryColor;
@@ -34,19 +34,18 @@ $warning: #ffc107 !default; // hover #E0A800 or #ff8484
   overflow-wrap: break-word;
   min-height: 32px;
   height: auto;
-  width: 100%;
+  max-width: 100%;
   margin: 1px;
-  padding: 4px;
+  padding: 4px 2px;
   font-size: 18px;
   background: transparent;
   border: 1px solid transparent;
-  border-radius: 3px;
+  border-radius: 2px;
   box-shadow: none;
   line-height: 24px;
   outline: none;
   &.with-icon {
-    margin-left: 20px;
-    width: calc(100% - 20px);
+    margin-left: 29px;
   }
   &.bold {
     font-size: 20px;
@@ -55,8 +54,8 @@ $warning: #ffc107 !default; // hover #E0A800 or #ff8484
 
   &:focus {
     background: #fff;
-    border: 1px solid #5ba4cf;
-    box-shadow: 0 0 0 1px #5ba4cf;
+    border: 1px solid $borderColor;
+    box-shadow: 0 0 0 1px $borderColor;
   }
 }
 
