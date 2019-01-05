@@ -2,7 +2,8 @@ $mainColor: #000;
 $secondaryColor: #333;
 $danger: #dc3545 !default;
 $warning: #ffc107 !default; // hover #E0A800 or #ff8484
-$borderColor: #5ba4cf !default;
+$titleInputBorderColor: #5ba4cf !default;
+$titleInputMinHeight: 32px !default;
 
 .wrapper {
   box-sizing: border-box;
@@ -29,10 +30,11 @@ $borderColor: #5ba4cf !default;
 .textarea {
   color: $mainColor;
   box-sizing: border-box;
+  flex-grow: 1;
   resize: none;
   overflow: hidden;
   overflow-wrap: break-word;
-  min-height: 32px;
+  min-height: $titleInputMinHeight;
   height: auto;
   max-width: 100%;
   margin: 1px;
@@ -42,7 +44,7 @@ $borderColor: #5ba4cf !default;
   border: 1px solid transparent;
   border-radius: 2px;
   box-shadow: none;
-  line-height: 24px;
+  line-height: 20px;
   outline: none;
   &.with-icon {
     margin-left: 29px;
@@ -54,8 +56,7 @@ $borderColor: #5ba4cf !default;
 
   &:focus {
     background: #fff;
-    border: 1px solid $borderColor;
-    box-shadow: 0 0 0 1px $borderColor;
+    border: 1px solid $titleInputBorderColor;
   }
 }
 
