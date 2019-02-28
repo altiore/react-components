@@ -38,20 +38,23 @@ $titleInputMinHeight: 32px !default;
   height: auto;
   max-width: 100%;
   margin: 1px;
-  padding: 4px 2px;
+  padding: 4px 4px 4px 11px;
   font-size: 18px;
   background: transparent;
   border: 1px solid transparent;
   border-radius: 2px;
   box-shadow: none;
-  line-height: 20px;
+  line-height: 24px;
   outline: none;
   &.with-icon {
     margin-left: 29px;
   }
   &.bold {
-    font-size: 20px;
-    font-weight: 700;
+    font-weight: bold;
+    &::placeholder {
+      color: gray;
+      font-weight: normal;
+    }
   }
 
   &:focus {
@@ -78,8 +81,8 @@ $titleInputMinHeight: 32px !default;
   font-weight: 500;
   font-style: italic;
   position: absolute;
-  bottom: -3px;
-  left: 6px;
+  bottom: -7px;
+  left: 14px;
   &.with-icon {
     left: 26px;
   }
