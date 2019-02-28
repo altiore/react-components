@@ -8,7 +8,7 @@ interface ITitleInputProps extends WrappedFieldProps {
   className?: string;
   classNameInput?: string;
   input: WrappedFieldInputProps;
-  inputRef: any;
+  inputRef?: any;
   meta: WrappedFieldMetaProps;
   label?: string;
   icon?: React.ReactNode;
