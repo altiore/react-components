@@ -171,8 +171,7 @@ class TitleInput extends React.Component<ITitleInputProps, IState> {
         <div styleName={'input-wrapper'} style={{ height: wrapperHeight }}>
           {icon && <div styleName="icon">{icon}</div>}
           <textarea
-            className={cn(styles.textarea, {
-              [`${classNameInput}`]: !!classNameInput,
+            className={cn(styles.textarea, classNameInput, {
               [styles.bold]: bold,
               [styles['with-icon']]: !!icon
             })}
