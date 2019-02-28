@@ -8,6 +8,7 @@ interface ITitleInputProps extends WrappedFieldProps {
   className?: string;
   classNameInput?: string;
   input: WrappedFieldInputProps;
+  inputRef: any;
   meta: WrappedFieldMetaProps;
   label?: string;
   icon?: React.ReactNode;
@@ -40,6 +41,9 @@ class TitleInput extends React.Component<ITitleInputProps, IState> {
 
     this.titleInputRef = null;
     this.setTitleInputRef = element => {
+      if (this.props.inputRef) {
+        this.props.inputRef(element);
+      }
       this.titleInputRef = element;
     };
 
